@@ -32,6 +32,15 @@ class ViewController: NSViewController {
         let items = createContextMenuItems()
         items.forEach(contextMenu.addItem)
         view.menu = contextMenu
+
+        // Add timer
+        let timer = Timer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(ViewController.timerTick),
+            userInfo: nil,
+            repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
 
     override var representedObject: Any? {
@@ -51,6 +60,10 @@ class ViewController: NSViewController {
 
     @objc func quit(sender: NSMenuItem) {
         NSApp.terminate(self)
+    }
+    
+    @objc func timerTick() {
+        print("tick...")
     }
 }
 
