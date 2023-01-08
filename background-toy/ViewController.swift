@@ -9,6 +9,7 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
+    let animator = AnimationController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class ViewController: NSViewController {
         let timer = Timer(
             timeInterval: 0.1,
             target: self,
-            selector: #selector(ViewController.timerTick),
+            selector: #selector(ViewController.updateEveryTick),
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
@@ -63,10 +64,8 @@ class ViewController: NSViewController {
         NSApp.terminate(self)
     }
     
-    var index = 0
-    
-    @objc func timerTick() {
-        characterImageView.image = NSImage(named: "idle_\(index)")
-        index = (index + 1) % 3
+    @objc func updateEveryTick() {
+        let animationName = "idle" // TODO: update to valid data
+        animator.updateImage(imageView: characterImageView, animationName: animationName)
     }
 }
