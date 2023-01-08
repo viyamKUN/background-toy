@@ -26,6 +26,12 @@ class ViewController: NSViewController {
         // Set transparent background
         view.window?.isOpaque = false
         view.window?.backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
+        
+        // Add context menu
+        let contextMenu = NSMenu()
+        let items = createContextMenuItems()
+        items.forEach(contextMenu.addItem)
+        view.menu = contextMenu
     }
 
     override var representedObject: Any? {
@@ -33,7 +39,26 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    override func mouseDown(with event: NSEvent) {
+        // 드래그 시작
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        // 드래그 종료
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        // 드래그...
+    }
+    
+    func createContextMenuItems() -> [NSMenuItem] {
+        let quit = NSMenuItem(title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
+        return [quit]
+    }
 
-
+    @objc func quit(sender: NSMenuItem) {
+        NSApp.terminate(self)
+    }
 }
 
