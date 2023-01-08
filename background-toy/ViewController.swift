@@ -39,17 +39,9 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-    
-    override func mouseDown(with event: NSEvent) {
-        // 드래그 시작
-    }
-    
-    override func mouseUp(with event: NSEvent) {
-        // 드래그 종료
-    }
-    
+
     override func mouseDragged(with event: NSEvent) {
-        // 드래그...
+        view.window?.performDrag(with: event)
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
