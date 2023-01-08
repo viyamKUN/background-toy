@@ -10,6 +10,7 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     let animator = AnimationController()
+    let stateController = StateController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,11 @@ class ViewController: NSViewController {
     }
     
     @objc func updateEveryTick() {
+        stateController.updateState()
         let animationName = "idle" // TODO: update to valid data
         animator.updateImage(imageView: characterImageView, animationName: animationName)
+        
+        // Resets
+        stateController.resetEveryTick()
     }
 }

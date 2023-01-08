@@ -16,6 +16,7 @@
 		9F6D94E1296ADE1B0022579C /* background_toyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */; };
 		9F9496CA296ADE7300707009 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F9496C9296ADE7300707009 /* .gitignore */; };
 		9FEFC975296B365B00530526 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC974296B365B00530526 /* AnimationController.swift */; };
+		9FEFC977296B404900530526 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC976296B404900530526 /* StateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background_toyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F9496C9296ADE7300707009 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9FEFC974296B365B00530526 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		9FEFC976296B404900530526 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				9F6D94C8296ADE1A0022579C /* Main.storyboard */,
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
 				9FEFC974296B365B00530526 /* AnimationController.swift */,
+				9FEFC976296B404900530526 /* StateController.swift */,
 			);
 			path = "background-toy";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6D94C5296ADE190022579C /* ViewController.swift in Sources */,
+				9FEFC977296B404900530526 /* StateController.swift in Sources */,
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
 				9FEFC975296B365B00530526 /* AnimationController.swift in Sources */,
 			);
