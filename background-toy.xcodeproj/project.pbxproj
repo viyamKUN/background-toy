@@ -14,6 +14,7 @@
 		9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94D4296ADE1B0022579C /* background_toyTests.swift */; };
 		9F6D94DF296ADE1B0022579C /* background_toyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94DE296ADE1B0022579C /* background_toyUITests.swift */; };
 		9F6D94E1296ADE1B0022579C /* background_toyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */; };
+		9F9496CA296ADE7300707009 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F9496C9296ADE7300707009 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		9F6D94DA296ADE1B0022579C /* background-toyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "background-toyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94DE296ADE1B0022579C /* background_toyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background_toyUITests.swift; sourceTree = "<group>"; };
 		9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background_toyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F9496C9296ADE7300707009 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		9F6D94B6296ADE190022579C = {
 			isa = PBXGroup;
 			children = (
+				9F9496C9296ADE7300707009 /* .gitignore */,
 				9F6D94C1296ADE190022579C /* background-toy */,
 				9F6D94D3296ADE1B0022579C /* background-toyTests */,
 				9F6D94DD296ADE1B0022579C /* background-toyUITests */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */,
+				9F9496CA296ADE7300707009 /* .gitignore in Resources */,
 				9F6D94CA296ADE1A0022579C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
