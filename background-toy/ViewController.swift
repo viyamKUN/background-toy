@@ -8,6 +8,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    @IBOutlet weak var characterImageView: NSImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class ViewController: NSViewController {
 
         // Add timer
         let timer = Timer(
-            timeInterval: 1.0,
+            timeInterval: 0.1,
             target: self,
             selector: #selector(ViewController.timerTick),
             userInfo: nil,
@@ -62,8 +63,10 @@ class ViewController: NSViewController {
         NSApp.terminate(self)
     }
     
+    var index = 0
+    
     @objc func timerTick() {
-        print("tick...")
+        characterImageView.image = NSImage(named: "idle_\(index)")
+        index = (index + 1) % 3
     }
 }
-

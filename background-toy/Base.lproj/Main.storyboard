@@ -710,6 +710,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="idle_0" id="rQ4-Rx-8Kd"/>
                     </imageView>
+                    <connections>
+                        <outlet property="characterImageView" destination="QcT-eO-poX" id="WYf-cF-FgH"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
