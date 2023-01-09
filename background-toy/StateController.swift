@@ -15,6 +15,7 @@ class StateController {
     var isUpdated: Bool = true
 
     func updateState(systemState : SystemState) {
+        // Update states by system.
         if systemState.isOnDragging {
             currentState = .grab
         }
