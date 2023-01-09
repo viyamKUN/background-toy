@@ -11,6 +11,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     let animator = AnimationController()
     let stateController = StateController()
+    let systemState = SystemState()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,16 @@ class ViewController: NSViewController {
 
     override func mouseDragged(with event: NSEvent) {
         view.window?.performDrag(with: event)
+        systemState.isOnDragging = true
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        if systemState.isOnDragging {
+            systemState.isOnDragging = false
+        }
+        else {
+            systemState.isTouched = true
+        }
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
@@ -66,11 +77,14 @@ class ViewController: NSViewController {
     }
     
     @objc func updateEveryTick() {
-        stateController.updateState()
-        let animationName = "idle" // TODO: update to valid data
-        animator.updateImage(imageView: characterImageView, animationName: animationName)
+        stateController.updateState(
+            systemState: systemState)
+        animator.updateImage(
+            imageView: characterImageView,
+            animationName: stateController.currentState.rawValue)
         
         // Resets
         stateController.resetEveryTick()
+        systemState.resetEveryTick()
     }
 }
