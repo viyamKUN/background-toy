@@ -15,6 +15,9 @@ class StateController {
     var isUpdated: Bool = true
     var timer: Int = 0 // tick count
     var isTimerOn: Bool = false
+    let stateTimer: [CharacterState: Int] = [
+        .touch: 5
+    ]
 
     func updateState(systemState : SystemState) {
         // Check exist timer status.
@@ -35,7 +38,7 @@ class StateController {
         }
         else if systemState.isTouched {
             self.currentState = .touch
-            self.setTimer(time: 5)
+            self.setTimer(time: stateTimer[.touch] ?? 0)
         }
         else if systemState.isMouseClose {
             self.currentState = .playingcursor
