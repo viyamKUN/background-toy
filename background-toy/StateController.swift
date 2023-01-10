@@ -13,31 +13,46 @@ class StateController {
     }
     var currentState: CharacterState = .idle
     var isUpdated: Bool = true
+    var timer: Int = 0 // tick count
+    var isTimerOn: Bool = false
 
     func updateState(systemState : SystemState) {
-        // Update states by system.
-        if systemState.isOnDragging {
-            currentState = .grab
-        }
-        else if systemState.isTouched {
-            currentState = .touch
-        }
-        else if systemState.isMouseClose {
-            currentState = .playingcursor
-        }
-        else {
-            currentState = .idle
+        // Check exist timer status.
+        if self.isTimerOn{
+            if self.timer > 0 {
+                // Timer is running... Do not update state.
+                self.timer -= 1
+                return
+            }
+            else {
+                self.turnOffTimer()
+            }
         }
 
-        // Upddate states by time.
-        updateTimer()
-        // TODO: 스테이트 업데이트
-        // 클릭, 걷기, idle이 시간 초과인 경우 idle
+        // Update states by system.
+        if systemState.isOnDragging {
+            self.currentState = .grab
+        }
+        else if systemState.isTouched {
+            self.currentState = .touch
+            self.setTimer(time: 5)
+        }
+        else if systemState.isMouseClose {
+            self.currentState = .playingcursor
+        }
+        else {
+            self.currentState = .idle
+        }
     }
     
-    func updateTimer() {
-        // 타이머가 등록된 애니메이션에 대해서
-        // 타이머를 갱신
+    func turnOffTimer() {
+        self.timer = 0
+        self.isTimerOn = false
+    }
+    
+    func setTimer(time: Int) {
+        self.isTimerOn = true
+        self.timer = time
     }
     
     func resetEveryTick() {
