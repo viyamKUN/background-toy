@@ -33,8 +33,16 @@ class MovingController {
     
     // Decide randomic direction to walk
     private func updateDirection() {
-        let x = Int.random(in: -1...1)
-        let y = Int.random(in: -1...1)
+        var x = Int.random(in: -1...1)
+        var y = Int.random(in: -1...1)
+        if x == 0 && y == 0 {
+            if Bool.random() {
+                x = Bool.random() ? -1 : 1
+            }
+            else {
+                y = Bool.random() ? -1 : 1
+            }
+        }
         direction = NSPoint(x: x, y: y)
     }
 }
