@@ -20,45 +20,57 @@ class StateController {
     ]
 
     func updateState(systemState : SystemState) {
-        // Check exist timer status.
-        if self.isTimerOn{
-            if self.timer > 0 {
+        // Update states by system.
+        if systemState.isOnDragging {
+            if currentState != .grab {
+                updateState(newState: .grab)
+            }
+        }
+        else if systemState.isTouched {
+            updateState(newState: .touch)
+            setTimer(tick: stateTimer[.touch] ?? 0)
+        }
+        else if isTimerOn{
+            // Check exist timer status.
+            if timer > 0 {
                 // Timer is running... Do not update state.
-                self.timer -= 1
+                timer -= 1
                 return
             }
             else {
-                self.turnOffTimer()
+                turnOffTimer()
             }
         }
-
-        // Update states by system.
-        if systemState.isOnDragging {
-            self.currentState = .grab
-        }
-        else if systemState.isTouched {
-            self.currentState = .touch
-            self.setTimer(time: stateTimer[.touch] ?? 0)
-        }
         else if systemState.isMouseClose {
-            self.currentState = .playingcursor
+            updateState(newState: .playingcursor)
         }
         else {
-            self.currentState = .idle
+            let newState : CharacterState = Bool.random() ? .walk : .idle
+            if newState != currentState {
+                updateState(newState: newState)
+                let timer = Int.random(in: 50...70)
+                setTimer(tick: timer)
+            }
         }
+    }
+    
+    private func updateState(newState : CharacterState) {
+        isUpdated = true
+        currentState = newState
+        turnOffTimer()
     }
     
     func turnOffTimer() {
-        self.timer = 0
-        self.isTimerOn = false
+        timer = 0
+        isTimerOn = false
     }
     
-    func setTimer(time: Int) {
-        self.isTimerOn = true
-        self.timer = time
+    func setTimer(tick: Int) {
+        isTimerOn = true
+        timer = tick
     }
     
     func resetEveryTick() {
-        self.isUpdated = false
+        isUpdated = false
     }
 }
