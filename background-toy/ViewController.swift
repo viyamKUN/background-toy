@@ -12,6 +12,7 @@ class ViewController: NSViewController {
     let animator = AnimationController()
     let stateController = StateController()
     let systemState = SystemState()
+    let movingController = MovingController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,9 @@ class ViewController: NSViewController {
         animator.updateImage(
             imageView: characterImageView,
             animationName: stateController.currentState.rawValue)
+        movingController.updatePosition(
+            window: view.window,
+            stateController: stateController)
         
         // Resets
         stateController.resetEveryTick()
