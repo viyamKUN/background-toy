@@ -20,8 +20,16 @@ class StateController {
     ]
 
     func updateState(systemState : SystemState) {
-        // Check exist timer status.
-        if isTimerOn{
+        // Update states by system.
+        if systemState.isOnDragging {
+            updateState(newState: .grab)
+        }
+        else if systemState.isTouched {
+            updateState(newState: .touch)
+            setTimer(tick: stateTimer[.touch] ?? 0)
+        }
+        else if isTimerOn{
+            // Check exist timer status.
             if timer > 0 {
                 // Timer is running... Do not update state.
                 timer -= 1
@@ -30,15 +38,6 @@ class StateController {
             else {
                 turnOffTimer()
             }
-        }
-
-        // Update states by system.
-        if systemState.isOnDragging {
-            updateState(newState: .grab)
-        }
-        else if systemState.isTouched {
-            updateState(newState: .touch)
-            setTimer(tick: stateTimer[.touch] ?? 0)
         }
         else if systemState.isMouseClose {
             updateState(newState: .playingcursor)
@@ -56,6 +55,7 @@ class StateController {
     private func updateState(newState : CharacterState) {
         isUpdated = true
         currentState = newState
+        turnOffTimer()
     }
     
     func turnOffTimer() {
