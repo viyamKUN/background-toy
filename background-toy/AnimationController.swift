@@ -13,17 +13,20 @@ enum AnimationPlayType {
 }
 
 class AnimationController {
-    let animationDict: [String: AnimationInfo] = [
+    private let animationDict: [String: AnimationInfo] = [
         "idle": AnimationInfo(count: 3, playType: .pingpong),
         "walk": AnimationInfo(count: 7, playType: .restart),
         "grab": AnimationInfo(count: 3, playType: .pingpong),
         "touch": AnimationInfo(count: 5, playType: .pingpong),
         "playingcursor": AnimationInfo(count: 9, playType: .restart)
     ]
-    var index = -1
-    var adder = 1
+    private var index = -1
+    private var adder = 1
     
-    @objc func updateImage(imageView: NSImageView, animationName: String) {
+    func updateImage(imageView: NSImageView, animationName: String, isUpdated: Bool) {
+        if isUpdated {
+            reset()
+        }
         if let info = animationDict[animationName] {
             switch info.playType {
             case .restart:
@@ -38,6 +41,11 @@ class AnimationController {
             }
             imageView.image = NSImage(named: "\(animationName)_\(index)")
         }
+    }
+    
+    private func reset() {
+        index = -1
+        adder = 1
     }
 }
 

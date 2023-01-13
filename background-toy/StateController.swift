@@ -22,7 +22,9 @@ class StateController {
     func updateState(systemState : SystemState) {
         // Update states by system.
         if systemState.isOnDragging {
-            updateState(newState: .grab)
+            if currentState != .grab {
+                updateState(newState: .grab)
+            }
         }
         else if systemState.isTouched {
             updateState(newState: .touch)

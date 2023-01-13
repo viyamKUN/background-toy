@@ -82,7 +82,8 @@ class ViewController: NSViewController {
             systemState: systemState)
         animator.updateImage(
             imageView: characterImageView,
-            animationName: stateController.currentState.rawValue)
+            animationName: stateController.currentState.rawValue,
+            isUpdated: stateController.isUpdated)
         movingController.updatePosition(
             window: view.window,
             stateController: stateController)
