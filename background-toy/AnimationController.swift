@@ -22,8 +22,24 @@ class AnimationController {
     ]
     private var index = -1
     private var adder = 1
+    private var tickCount : Double = 0
     
-    func updateImage(imageView: NSImageView, animationName: String, isUpdated: Bool) {
+    private let frameRate = 10
+    
+    func updateImage(
+        imageView: NSImageView,
+        animationName: String,
+        isUpdated: Bool,
+        tickInterval: Double
+    ) {
+        tickCount += tickInterval
+        if tickCount < (1.0 / Double(frameRate)) {
+            return
+        }
+        else {
+            tickCount = 0
+        }
+        
         if isUpdated {
             reset()
         }

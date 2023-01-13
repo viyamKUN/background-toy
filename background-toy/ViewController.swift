@@ -9,10 +9,12 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    let animator = AnimationController()
-    let stateController = StateController()
-    let systemState = SystemState()
-    let movingController = MovingController()
+    private let animator = AnimationController()
+    private let stateController = StateController()
+    private let systemState = SystemState()
+    private let movingController = MovingController()
+    
+    private let tickInterval = 0.05
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,7 @@ class ViewController: NSViewController {
 
         // Add timer
         let timer = Timer(
-            timeInterval: 0.1,
+            timeInterval: tickInterval,
             target: self,
             selector: #selector(ViewController.updateEveryTick),
             userInfo: nil,
@@ -83,7 +85,8 @@ class ViewController: NSViewController {
         animator.updateImage(
             imageView: characterImageView,
             animationName: stateController.currentState.rawValue,
-            isUpdated: stateController.isUpdated)
+            isUpdated: stateController.isUpdated,
+            tickInterval: tickInterval)
         movingController.updatePosition(
             window: view.window,
             stateController: stateController)
