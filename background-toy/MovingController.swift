@@ -31,8 +31,10 @@ class MovingController {
         window!.setFrameOrigin(desiredPosition)
     }
     
+    // Decide randomic direction to walk
     private func updateDirection() {
-        // TODO: 걷는 방향을 결정.
-        direction = NSPoint(x: 1, y: 1) // sample
+        let x = Int.random(in: -1...1)
+        let y = Int.random(in: -1...1)
+        direction = NSPoint(x: x, y: y)
     }
 }

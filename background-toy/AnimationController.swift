@@ -15,7 +15,7 @@ enum AnimationPlayType {
 class AnimationController {
     let animationDict: [String: AnimationInfo] = [
         "idle": AnimationInfo(count: 3, playType: .pingpong),
-        "walk": AnimationInfo(count: 1, playType: .restart),
+        "walk": AnimationInfo(count: 7, playType: .restart),
         "grab": AnimationInfo(count: 3, playType: .pingpong),
         "touch": AnimationInfo(count: 5, playType: .pingpong),
         "playingcursor": AnimationInfo(count: 9, playType: .restart)
