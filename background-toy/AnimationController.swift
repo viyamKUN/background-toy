@@ -32,6 +32,11 @@ class AnimationController {
         isUpdated: Bool,
         tickInterval: Double
     ) {
+        if isUpdated {
+            reset()
+        }
+        
+        // Calculate tick count for frame rate.
         tickCount += tickInterval
         if tickCount < (1.0 / Double(frameRate)) {
             return
@@ -40,9 +45,7 @@ class AnimationController {
             tickCount = 0
         }
         
-        if isUpdated {
-            reset()
-        }
+        // Change image.
         if let info = animationDict[animationName] {
             switch info.playType {
             case .restart:
