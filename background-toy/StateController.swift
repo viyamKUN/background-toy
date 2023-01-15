@@ -16,7 +16,7 @@ class StateController {
     var timer: Int = 0 // tick count
     var isTimerOn: Bool = false
     let stateTimer: [CharacterState: Int] = [
-        .touch: 5,
+        .touch: 20,
         .playingcursor: 20
     ]
 

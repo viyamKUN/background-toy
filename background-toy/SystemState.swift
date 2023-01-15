@@ -12,8 +12,20 @@ class SystemState {
     var isTouched : Bool = false
     var isMouseClose : Bool = false
     var isHover : Bool = false
+    var touchingTime : Int = 0 // tick count
     
     func resetEveryTick() {
-        self.isTouched = false
+        isTouched = false
+    }
+    
+    func isTouchingTimeInTouchRange() -> Bool {
+        return touchingTime < 10
+    }
+    
+    func updateTouchingTime() {
+        if touchingTime >= 10 {
+            return
+        }
+        touchingTime += 1
     }
 }
