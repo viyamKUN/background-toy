@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     private let systemState = SystemState()
     private let movingController = MovingController()
     
-    private let tickInterval = 0.05
+    private let tickInterval = 0.02
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,11 @@ class ViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.level = .floating
     }
 
     override var representedObject: Any? {
