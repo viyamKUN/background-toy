@@ -49,6 +49,11 @@ class ViewController: NSViewController {
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.level = .floating
+    }
 
     override var representedObject: Any? {
         didSet {
