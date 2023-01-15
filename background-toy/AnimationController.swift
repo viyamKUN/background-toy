@@ -30,7 +30,8 @@ class AnimationController {
         imageView: NSImageView,
         animationName: String,
         isUpdated: Bool,
-        tickInterval: Double
+        tickInterval: Double,
+        isFlipped: Bool
     ) {
         if isUpdated {
             reset()
@@ -58,7 +59,7 @@ class AnimationController {
             case .none:
                 print("Unexpected value")
             }
-            imageView.image = NSImage(named: "\(animationName)_\(index)")
+            imageView.image = NSImage(named: "\(animationName)_\(index)")?.flipped(flipHorizontally: isFlipped)
         }
     }
     

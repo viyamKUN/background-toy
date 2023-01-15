@@ -82,14 +82,15 @@ class ViewController: NSViewController {
     @objc func updateEveryTick() {
         stateController.updateState(
             systemState: systemState)
+        movingController.updatePosition(
+            window: view.window,
+            stateController: stateController)
         animator.updateImage(
             imageView: characterImageView,
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
-            tickInterval: tickInterval)
-        movingController.updatePosition(
-            window: view.window,
-            stateController: stateController)
+            tickInterval: tickInterval,
+            isFlipped: movingController.isFlipped())
         
         // Resets
         stateController.resetEveryTick()
