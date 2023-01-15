@@ -11,6 +11,7 @@ class SystemState {
     var isOnDragging : Bool = false
     var isTouched : Bool = false
     var isMouseClose : Bool = false
+    var isHover : Bool = false
     
     func resetEveryTick() {
         self.isTouched = false
