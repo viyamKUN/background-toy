@@ -30,8 +30,14 @@ class AnimationController {
         imageView: NSImageView,
         animationName: String,
         isUpdated: Bool,
-        tickInterval: Double
+        tickInterval: Double,
+        isFlipped: Bool
     ) {
+        if isUpdated {
+            reset()
+        }
+        
+        // Calculate tick count for frame rate.
         tickCount += tickInterval
         if tickCount < (1.0 / Double(frameRate)) {
             return
@@ -40,9 +46,7 @@ class AnimationController {
             tickCount = 0
         }
         
-        if isUpdated {
-            reset()
-        }
+        // Change image.
         if let info = animationDict[animationName] {
             switch info.playType {
             case .restart:
@@ -55,7 +59,7 @@ class AnimationController {
             case .none:
                 print("Unexpected value")
             }
-            imageView.image = NSImage(named: "\(animationName)_\(index)")
+            imageView.image = NSImage(named: "\(animationName)_\(index)")?.flipped(flipHorizontally: isFlipped)
         }
     }
     

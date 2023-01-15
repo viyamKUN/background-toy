@@ -9,7 +9,11 @@ import Foundation
 import Cocoa
 
 class MovingController {
-    var direction = NSPoint(x: 1, y: 1)
+    private var direction = NSPoint(x: 1, y: 1)
+    
+    func isFlipped() -> Bool {
+        return direction.x > 0
+    }
     
     func updatePosition(window: NSWindow?, stateController: StateController) {
         if window === nil {
