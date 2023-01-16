@@ -28,8 +28,8 @@ class MacroController {
         
         // attack macro menus to main menu
         commandSet.forEach { (key, commands) in
-            let menu = NSMenuItem(title: key, action: #selector(launchCommand(sender:)), keyEquivalent: "")
-            menu.isEnabled = false // it seems not work
+            let menu = NSMenuItem(title: key, action: #selector(MacroController.launchCommand(sender:)), keyEquivalent: "")
+            menu.target = self
             macroMenu.addItem(menu)
         }
     }
