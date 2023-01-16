@@ -16,7 +16,8 @@ class StateController {
     var timer: Int = 0 // tick count
     var isTimerOn: Bool = false
     let stateTimer: [CharacterState: Int] = [
-        .touch: 5
+        .touch: 20,
+        .playingcursor: 20
     ]
 
     func updateState(systemState : SystemState) {
@@ -29,6 +30,10 @@ class StateController {
         else if systemState.isTouched {
             updateState(newState: .touch)
             setTimer(tick: stateTimer[.touch] ?? 0)
+        }
+        else if systemState.isHover {
+            updateState(newState: .playingcursor)
+            setTimer(tick: stateTimer[.playingcursor] ?? 0)
         }
         else if isTimerOn{
             // Check exist timer status.
