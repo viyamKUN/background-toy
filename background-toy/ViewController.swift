@@ -70,9 +70,13 @@ class ViewController: NSViewController {
         if systemState.isOnDragging {
             systemState.isOnDragging = false
         }
-        else {
+        else if systemState.isTouchingTimeInTouchRange(){
             systemState.isTouched = true
         }
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        systemState.touchingTime = 0
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
@@ -85,6 +89,10 @@ class ViewController: NSViewController {
     }
     
     @objc func updateEveryTick() {
+        // update system
+        systemState.updateTouchingTime()
+        
+        // update controllers
         stateController.updateState(
             systemState: systemState)
         movingController.updatePosition(
