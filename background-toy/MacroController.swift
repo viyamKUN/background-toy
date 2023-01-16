@@ -14,7 +14,7 @@ class MacroController {
     }
     
     private let commandSet: [String: [MacroCommand]] = [
-        "테스트1": [MacroCommand(name: "디스코드", path: "", type: .process),
+        "테스트1": [MacroCommand(name: "디스코드", path: "/Applications/Discord.app/Contents/MacOS/Discord", type: .process),
                 MacroCommand(name: "구글", path: "https://www.google.com/", type: .web)],
         "테스트2": [MacroCommand(name: "구글", path: "https://www.google.com/", type: .web)]
     ]
@@ -42,8 +42,14 @@ class MacroController {
         commands?.forEach { (cmd) in
             switch cmd.type {
             case .process:
-                // TODO
-                print("프로세스 실행 ... " + cmd.path)
+                let url = URL(fileURLWithPath: cmd.path)
+                do {
+                    let task = Process()
+                    task.executableURL = url
+                    try task.run() // has an error: Permission denied
+                } catch {
+                    print(error)
+                }
             case .web:
                 if let url = URL(string: cmd.path) {
                     NSWorkspace.shared.open(url)
