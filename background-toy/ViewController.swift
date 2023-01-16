@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
+    private let macroController = MacroController()
     
     private let tickInterval = 0.02
 
@@ -38,6 +39,7 @@ class ViewController: NSViewController {
         let contextMenu = NSMenu()
         let items = createContextMenuItems()
         items.forEach(contextMenu.addItem)
+        macroController.createMacroMenu(nsMenu: contextMenu)
         view.menu = contextMenu
 
         // Add timer
