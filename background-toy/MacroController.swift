@@ -39,8 +39,17 @@ class MacroController {
         if commands == nil || commands?.count == 0 {
             return
         }
-        commands?.forEach {
-            (cmd) in print(cmd.path)
+        commands?.forEach { (cmd) in
+            switch cmd.type {
+            case .process:
+                // TODO
+                print("프로세스 실행 ... " + cmd.path)
+            case .web:
+                if let url = URL(string: cmd.path) {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+            print(cmd.path)
         }
     }
 }
