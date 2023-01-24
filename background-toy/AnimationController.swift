@@ -24,7 +24,7 @@ class AnimationController {
         if let path = Bundle.main.path(forResource: "animation", ofType: "csv"){
             do {
                 let csvFile = try String(contentsOf: URL(filePath: path))
-                let lines = csvFile.split(separator: "\n")
+                let lines = csvFile.split(separator: "\n")[1...]
                 for line in lines {
                     let elements = line.split(separator: ",")
                     animationDict[String(elements[0])] = AnimationInfo(
