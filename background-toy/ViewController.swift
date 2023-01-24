@@ -88,7 +88,11 @@ class ViewController: NSViewController {
     }
     
     override func mouseEntered(with event: NSEvent) {
-        print("마우스 엔터 이벤트")
+        systemState.isHover = true
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        systemState.isHover = false
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
