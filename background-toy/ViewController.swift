@@ -53,7 +53,7 @@ class ViewController: NSViewController {
         
         let trackingArea = NSTrackingArea(
             rect: NSRect(x: 0, y: 0, width: 120, height: 120),
-            options: NSTrackingArea.Options.activeAlways,
+            options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
             owner: self)
         view.addTrackingArea(trackingArea)
     }
@@ -85,6 +85,10 @@ class ViewController: NSViewController {
     
     override func mouseDown(with event: NSEvent) {
         systemState.touchingTime = 0
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        print("마우스 엔터 이벤트")
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
