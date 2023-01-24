@@ -50,6 +50,12 @@ class ViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+        
+        let trackingArea = NSTrackingArea(
+            rect: NSRect(x: 0, y: 0, width: 120, height: 120),
+            options: NSTrackingArea.Options.activeAlways,
+            owner: self)
+        view.addTrackingArea(trackingArea)
     }
     
     override func viewDidAppear() {
