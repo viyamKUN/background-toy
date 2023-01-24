@@ -32,8 +32,10 @@ class StateController {
             setTimer(tick: stateTimer[.touch] ?? 0)
         }
         else if systemState.isHover {
-            updateState(newState: .playingcursor)
-            setTimer(tick: stateTimer[.playingcursor] ?? 0)
+            if currentState != .playingcursor {
+                updateState(newState: .playingcursor)
+                setTimer(tick: stateTimer[.playingcursor] ?? 0)
+            }
         }
         else if isTimerOn{
             // Check exist timer status.
