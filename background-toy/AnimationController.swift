@@ -13,18 +13,29 @@ enum AnimationPlayType {
 }
 
 class AnimationController {
-    private let animationDict: [String: AnimationInfo] = [
-        "idle": AnimationInfo(count: 3, playType: .pingpong),
-        "walk": AnimationInfo(count: 7, playType: .restart),
-        "grab": AnimationInfo(count: 3, playType: .pingpong),
-        "touch": AnimationInfo(count: 5, playType: .pingpong),
-        "playingcursor": AnimationInfo(count: 9, playType: .restart)
-    ]
+    private var animationDict: [String: AnimationInfo] = [:]
     private var index = -1
     private var adder = 1
     private var tickCount : Double = 0
     
     private let frameRate = 10
+    
+    func readAnimationData() {
+        if let path = Bundle.main.path(forResource: "animation", ofType: "csv"){
+            do {
+                let csvFile = try String(contentsOf: URL(filePath: path))
+                let lines = csvFile.split(separator: "\n")
+                for line in lines {
+                    let elements = line.split(separator: ",")
+                    animationDict[String(elements[0])] = AnimationInfo(
+                        count: Int(elements[1]) ?? 0,
+                        playType: String(elements[2]))
+                }
+            } catch {
+                print("Fail to read animation data.")
+            }
+        }
+    }
     
     func updateImage(
         imageView: NSImageView,
@@ -73,8 +84,15 @@ class AnimationInfo {
     let count: Int!
     let playType: AnimationPlayType!
 
-    init(count: Int, playType: AnimationPlayType) {
+    init(count: Int, playType: String) {
         self.count = count
-        self.playType = playType
+        switch playType {
+        case "pingpong":
+            self.playType = .pingpong
+        case "restart":
+            self.playType = .restart
+        default:
+            self.playType = .none
+        }
     }
 }
