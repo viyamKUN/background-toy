@@ -39,6 +39,7 @@ class ViewController: NSViewController {
         let contextMenu = NSMenu()
         let items = createContextMenuItems()
         items.forEach(contextMenu.addItem)
+        macroController.readMacroData()
         macroController.createMacroMenu(nsMenu: contextMenu)
         view.menu = contextMenu
 
