@@ -35,6 +35,10 @@ class ViewController: NSViewController {
         view.window?.isOpaque = false
         view.window?.backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
         
+        // Read data
+        animator.readAnimationData()
+        macroController.readMacroData()
+        
         // Add context menu
         let contextMenu = NSMenu()
         let items = createContextMenuItems()

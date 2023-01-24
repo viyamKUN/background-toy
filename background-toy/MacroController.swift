@@ -13,11 +13,31 @@ class MacroController {
         case process, web
     }
     
-    private let commandSet: [String: [MacroCommand]] = [
-        "테스트1": [MacroCommand(name: "디스코드", path: "/Applications/Discord.app", type: .process),
-                MacroCommand(name: "구글", path: "https://www.google.com/", type: .web)],
-        "테스트2": [MacroCommand(name: "구글", path: "https://www.google.com/", type: .web)]
-    ]
+    private var commandSet: [String: [MacroCommand]] = [:]
+    
+    func readMacroData() {
+        if let path = Bundle.main.path(forResource: "macro", ofType: "json") {
+            do {
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
+                let resultObject = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                if let jsonResults = resultObject as? Dictionary<String, [Dictionary<String, String>]> {
+                    for result in jsonResults {
+                        for cmd in result.value {
+                            if commandSet[result.key] == nil {
+                                commandSet[result.key] = []
+                            }
+                            commandSet[result.key]?.append(MacroCommand(
+                                name: cmd["name"]!,
+                                path: cmd["path"]!,
+                                type: cmd["type"]!))
+                        }
+                    }
+                }
+            } catch {
+                print("Fail to read data")
+            }
+        }
+    }
     
     func createMacroMenu(nsMenu: NSMenu) {
         // Create macro menus
@@ -40,7 +60,7 @@ class MacroController {
             return
         }
         commands?.forEach { (cmd) in
-            switch cmd.type {
+            switch cmd.getType() {
             case .process:
                 openProgram(target: cmd.path)
             case .web:
@@ -68,11 +88,22 @@ class MacroController {
 class MacroCommand {
     var name : String
     var path : String
-    var type : MacroController.MacroType
+    var type : String
     
-    init(name: String, path: String, type: MacroController.MacroType) {
+    init(name: String, path: String, type: String) {
         self.name = name
         self.path = path
         self.type = type
+    }
+    
+    func getType() -> MacroController.MacroType {
+        switch type {
+        case "process":
+            return .process
+        case "web":
+            return .web
+        default:
+            return .web
+        }
     }
 }
