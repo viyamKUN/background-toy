@@ -48,9 +48,6 @@ class StateController {
                 turnOffTimer()
             }
         }
-        else if systemState.isMouseClose {
-            updateState(newState: .playingcursor)
-        }
         else {
             let newState : CharacterState = Bool.random() ? .walk : .idle
             if newState != currentState {

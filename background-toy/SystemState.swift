@@ -10,7 +10,6 @@ import Foundation
 class SystemState {
     var isOnDragging : Bool = false
     var isTouched : Bool = false
-    var isMouseClose : Bool = false
     var isHover : Bool = false
     var touchingTime : Int = 0 // tick count
     
