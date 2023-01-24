@@ -50,6 +50,12 @@ class ViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+        
+        let trackingArea = NSTrackingArea(
+            rect: NSRect(x: 0, y: 0, width: 120, height: 120),
+            options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
+            owner: self)
+        view.addTrackingArea(trackingArea)
     }
     
     override func viewDidAppear() {
@@ -79,6 +85,14 @@ class ViewController: NSViewController {
     
     override func mouseDown(with event: NSEvent) {
         systemState.touchingTime = 0
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        systemState.isHover = true
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        systemState.isHover = false
     }
     
     func createContextMenuItems() -> [NSMenuItem] {
