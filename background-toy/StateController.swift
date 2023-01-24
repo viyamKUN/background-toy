@@ -31,13 +31,13 @@ class StateController {
             updateState(newState: .touch)
             setTimer(tick: stateTimer[.touch] ?? 0)
         }
-        else if systemState.isHover {
+        else if systemState.isHover && currentState != .touch {
             if currentState != .playingcursor {
                 updateState(newState: .playingcursor)
                 setTimer(tick: stateTimer[.playingcursor] ?? 0)
             }
         }
-        else if isTimerOn{
+        else if isTimerOn {
             // Check exist timer status.
             if timer > 0 {
                 // Timer is running... Do not update state.
