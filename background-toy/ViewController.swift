@@ -37,12 +37,12 @@ class ViewController: NSViewController {
         
         // Read data
         animator.readAnimationData()
+        macroController.readMacroData()
         
         // Add context menu
         let contextMenu = NSMenu()
         let items = createContextMenuItems()
         items.forEach(contextMenu.addItem)
-        macroController.readMacroData()
         macroController.createMacroMenu(nsMenu: contextMenu)
         view.menu = contextMenu
 
