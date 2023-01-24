@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E27622E29759DCD00245284 /* MacroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27622D29759DCD00245284 /* MacroController.swift */; };
+		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
 		9F6D94C5296ADE190022579C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		9E27622D29759DCD00245284 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
+		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94C2296ADE190022579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E70FCAE29802ECF000C787C /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				9E70FCAF29802F24000C787C /* macro.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		9E8A07E62973F59900C237F1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		9F6D94C1296ADE190022579C /* background-toy */ = {
 			isa = PBXGroup;
 			children = (
+				9E70FCAE29802ECF000C787C /* resources */,
 				9E8A07E62973F59900C237F1 /* Extensions */,
 				9F6D94C2296ADE190022579C /* AppDelegate.swift */,
 				9F6D94C4296ADE190022579C /* ViewController.swift */,
@@ -254,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E70FCB029802F24000C787C /* macro.json in Resources */,
 				9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */,
 				9F9496CA296ADE7300707009 /* .gitignore in Resources */,
 				9F6D94CA296ADE1A0022579C /* Main.storyboard in Resources */,
