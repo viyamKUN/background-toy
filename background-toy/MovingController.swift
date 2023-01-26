@@ -5,16 +5,16 @@
 //  Created by 윤하연 on 2023/01/13.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 class MovingController {
     private var direction = NSPoint(x: 1, y: 1)
-    
+
     func isFlipped() -> Bool {
         return direction.x > 0
     }
-    
+
     func updatePosition(window: NSWindow?, stateController: StateController) {
         if window === nil {
             return
@@ -22,19 +22,20 @@ class MovingController {
         let origin = window!.frame.origin
         let originPoint = NSPoint(x: origin.x, y: origin.y)
         var desiredPosition = originPoint
-        
+
         let isWalking = stateController.currentState == .walk
         if isWalking {
             if stateController.isUpdated {
                 updateDirection()
             }
-            desiredPosition = NSPoint(x: originPoint.x + direction.x,
-                                      y: originPoint.y + direction.y)
+            desiredPosition = NSPoint(
+                x: originPoint.x + direction.x,
+                y: originPoint.y + direction.y)
         }
-        
+
         window!.setFrameOrigin(desiredPosition)
     }
-    
+
     // Decide randomic direction to walk
     private func updateDirection() {
         var x = Int.random(in: -1...1)
@@ -42,8 +43,7 @@ class MovingController {
         if x == 0 && y == 0 {
             if Bool.random() {
                 x = Bool.random() ? -1 : 1
-            }
-            else {
+            } else {
                 y = Bool.random() ? -1 : 1
             }
         }

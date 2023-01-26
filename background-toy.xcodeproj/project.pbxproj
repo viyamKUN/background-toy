@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35401DD22982E7C300C215BF /* swift-format-configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "swift-format-configuration.json"; sourceTree = "<group>"; };
 		9E27622D29759DCD00245284 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		9F6D94B6296ADE190022579C = {
 			isa = PBXGroup;
 			children = (
+				35401DD22982E7C300C215BF /* swift-format-configuration.json */,
 				9F9496C9296ADE7300707009 /* .gitignore */,
 				9F6D94C1296ADE190022579C /* background-toy */,
 				9F6D94D3296ADE1B0022579C /* background-toyTests */,
@@ -171,6 +173,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F6D94E4296ADE1B0022579C /* Build configuration list for PBXNativeTarget "background-toy" */;
 			buildPhases = (
+				35401DD12982E53500C215BF /* Run SwiftFormat format */,
+				35401DD32982E88100C215BF /* Run SwiftFormat Lint */,
 				9F6D94BB296ADE190022579C /* Sources */,
 				9F6D94BC296ADE190022579C /* Frameworks */,
 				9F6D94BD296ADE190022579C /* Resources */,
@@ -291,6 +295,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35401DD12982E53500C215BF /* Run SwiftFormat format */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/swift-format-configuration.json",
+			);
+			name = "Run SwiftFormat format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "# Import all env vars in zshrc\n. ~/.zshrc\n\nif which swift-format >/dev/null; then\n    swift-format format --configuration ${SRCROOT}/swift-format-configuration.json --in-place --recursive --parallel ${SRCROOT}\nelse\n    echo \"warning: swift-format not installed\"\n    exit 1\nfi\n";
+		};
+		35401DD32982E88100C215BF /* Run SwiftFormat Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/swift-format-configuration.json",
+			);
+			name = "Run SwiftFormat Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "# Import all env vars in zshrc\n. ~/.zshrc\n\nif which swift-format >/dev/null; then\n    swift-format lint --configuration ${SRCROOT}/swift-format-configuration.json --strict --parallel --recursive ${SRCROOT}\nelse\n    echo \"warning: swift-format not installed\"\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F6D94BB296ADE190022579C /* Sources */ = {

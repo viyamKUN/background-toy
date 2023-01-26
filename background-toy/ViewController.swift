@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     private let systemState = SystemState()
     private let movingController = MovingController()
     private let macroController = MacroController()
-    
+
     private let tickInterval = 0.02
 
     override func viewDidLoad() {
@@ -22,10 +22,10 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear() {
         super.viewWillAppear()
-        
+
         // Set size and position
         view.window?.setContentSize(NSSize(width: 120, height: 120))
         view.setFrameOrigin(NSPoint(x: 0, y: 0))
@@ -34,11 +34,11 @@ class ViewController: NSViewController {
         // Set transparent background
         view.window?.isOpaque = false
         view.window?.backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
-        
+
         // Read data
         animator.readAnimationData()
         macroController.readMacroData()
-        
+
         // Add context menu
         let contextMenu = NSMenu()
         let items = createContextMenuItems()
@@ -54,14 +54,16 @@ class ViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
-        
+
         let trackingArea = NSTrackingArea(
             rect: NSRect(x: 0, y: 0, width: 120, height: 120),
-            options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
+            options: [
+                NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited,
+            ],
             owner: self)
         view.addTrackingArea(trackingArea)
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.level = .floating
@@ -69,7 +71,7 @@ class ViewController: NSViewController {
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
 
@@ -81,37 +83,37 @@ class ViewController: NSViewController {
     override func mouseUp(with event: NSEvent) {
         if systemState.isOnDragging {
             systemState.isOnDragging = false
-        }
-        else if systemState.isTouchingTimeInTouchRange(){
+        } else if systemState.isTouchingTimeInTouchRange() {
             systemState.isTouched = true
         }
     }
-    
+
     override func mouseDown(with event: NSEvent) {
         systemState.touchingTime = 0
     }
-    
+
     override func mouseEntered(with event: NSEvent) {
         systemState.isHover = true
     }
-    
+
     override func mouseExited(with event: NSEvent) {
         systemState.isHover = false
     }
-    
+
     func createContextMenuItems() -> [NSMenuItem] {
-        let quit = NSMenuItem(title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
+        let quit = NSMenuItem(
+            title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
         return [quit]
     }
 
     @objc func quit(sender: NSMenuItem) {
         NSApp.terminate(self)
     }
-    
+
     @objc func updateEveryTick() {
         // update system
         systemState.updateTouchingTime()
-        
+
         // update controllers
         stateController.updateState(
             systemState: systemState)
@@ -124,7 +126,7 @@ class ViewController: NSViewController {
             isUpdated: stateController.isUpdated,
             tickInterval: tickInterval,
             isFlipped: movingController.isFlipped())
-        
+
         // Resets
         stateController.resetEveryTick()
         systemState.resetEveryTick()

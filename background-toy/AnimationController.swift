@@ -16,12 +16,12 @@ class AnimationController {
     private var animationDict: [String: AnimationInfo] = [:]
     private var index = -1
     private var adder = 1
-    private var tickCount : Double = 0
-    
+    private var tickCount: Double = 0
+
     private let frameRate = 10
-    
+
     func readAnimationData() {
-        if let path = Bundle.main.path(forResource: "animation", ofType: "csv"){
+        if let path = Bundle.main.path(forResource: "animation", ofType: "csv") {
             do {
                 let csvFile = try String(contentsOf: URL(filePath: path))
                 let lines = csvFile.split(separator: "\n")[1...]
@@ -36,7 +36,7 @@ class AnimationController {
             }
         }
     }
-    
+
     func updateImage(
         imageView: NSImageView,
         animationName: String,
@@ -47,16 +47,15 @@ class AnimationController {
         if isUpdated {
             reset()
         }
-        
+
         // Calculate tick count for frame rate.
         tickCount += tickInterval
         if tickCount < (1.0 / Double(frameRate)) {
             return
-        }
-        else {
+        } else {
             tickCount = 0
         }
-        
+
         // Change image.
         if let info = animationDict[animationName] {
             switch info.playType {
@@ -70,10 +69,11 @@ class AnimationController {
             case .none:
                 print("Unexpected value")
             }
-            imageView.image = NSImage(named: "\(animationName)_\(index)")?.flipped(flipHorizontally: isFlipped)
+            imageView.image = NSImage(named: "\(animationName)_\(index)")?.flipped(
+                flipHorizontally: isFlipped)
         }
     }
-    
+
     private func reset() {
         index = -1
         adder = 1
