@@ -2,5 +2,5 @@ name,count,playtype
 idle,3,pingpong
 walk,7,restart
 grab,3,pingpong
-touch,5,pingpong
-playingcursor,9,restart
+touch,2,restart
+playingcursor,6,restart
