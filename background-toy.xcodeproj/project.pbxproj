@@ -93,13 +93,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35401DD62982F05100C215BF /* Macros */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Macros;
-			sourceTree = "<group>";
-		};
 		9E70FCAE29802ECF000C787C /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +135,6 @@
 		9F6D94C1296ADE190022579C /* background-toy */ = {
 			isa = PBXGroup;
 			children = (
-				35401DD62982F05100C215BF /* Macros */,
 				9E70FCAE29802ECF000C787C /* resources */,
 				9E8A07E62973F59900C237F1 /* Extensions */,
 				9F6D94C2296ADE190022579C /* AppDelegate.swift */,
