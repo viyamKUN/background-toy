@@ -15,8 +15,6 @@ class ViewController: NSViewController {
     private let movingController = MovingController()
     private let macroController = MacroController()
 
-    private let tickInterval = 0.02
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +25,8 @@ class ViewController: NSViewController {
         super.viewWillAppear()
 
         // Set size and position
-        view.window?.setContentSize(NSSize(width: 120, height: 120))
+        view.window?.setContentSize(
+            NSSize(width: Constant.Window.width, height: Constant.Window.height))
         view.setFrameOrigin(NSPoint(x: 0, y: 0))
         view.window?.center()
 
@@ -48,7 +47,7 @@ class ViewController: NSViewController {
 
         // Add timer
         let timer = Timer(
-            timeInterval: tickInterval,
+            timeInterval: Constant.Animation.tickInterval,
             target: self,
             selector: #selector(ViewController.updateEveryTick),
             userInfo: nil,
@@ -56,7 +55,7 @@ class ViewController: NSViewController {
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
 
         let trackingArea = NSTrackingArea(
-            rect: NSRect(x: 0, y: 0, width: 120, height: 120),
+            rect: NSRect(x: 0, y: 0, width: Constant.Window.width, height: Constant.Window.height),
             options: [
                 NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited,
             ],
@@ -124,7 +123,7 @@ class ViewController: NSViewController {
             imageView: characterImageView,
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
-            tickInterval: tickInterval,
+            tickInterval: Constant.Animation.tickInterval,
             isFlipped: movingController.isFlipped())
 
         // Resets
