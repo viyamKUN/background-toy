@@ -18,8 +18,6 @@ class AnimationController {
     private var adder = 1
     private var tickCount: Double = 0
 
-    private let frameRate = 10
-
     func readAnimationData() {
         if let path = Bundle.main.path(forResource: "animation", ofType: "csv") {
             do {
@@ -50,7 +48,7 @@ class AnimationController {
 
         // Calculate tick count for frame rate.
         tickCount += tickInterval
-        if tickCount < (1.0 / Double(frameRate)) {
+        if tickCount < (1.0 / Double(Constant.Animation.frameRate)) {
             return
         } else {
             tickCount = 0
