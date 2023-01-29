@@ -12,33 +12,24 @@ struct Macro {
     var command: [Command]
 }
 
-/// Execute macro by menu item's name
 class MacroExecutor {
-    private var commandMap: [String: Macro] = [:]
+    private var macroMap: [String: Macro] = [:]
 
-    func registerMacro(_ name: String, _ command: Macro) {
-        commandMap[name] = command
+    func registerMacro(_ name: String, _ macro: Macro) {
+        macroMap[name] = macro
     }
 
-    func createMacroMenu(nsMenu: NSMenu) {
-        // Create macro menus
-        let macroMenu = NSMenu()
-        let macroDropDown = NSMenuItem(title: "Macro", action: nil, keyEquivalent: "")
-        nsMenu.addItem(macroDropDown)
-        nsMenu.setSubmenu(macroMenu, for: macroDropDown)
-
-        // attack macro menus to main menu
-        commandMap.forEach { (key, commands) in
-            let menu = NSMenuItem(
-                title: key, action: #selector(MacroExecutor.executeSet(sender:)),
-                keyEquivalent: "")
-            menu.target = self
-            macroMenu.addItem(menu)
+    func listMacros() -> [(String, Macro)] {
+        var macroList: [(String, Macro)] = []
+        for (key, macro) in macroMap {
+            macroList.append((key, macro))
         }
+        return macroList
     }
 
-    @objc private func executeSet(sender: NSMenuItem) {
-        let commands = commandMap[sender.title]?.command
+    /// Execute macro by menu item's name.
+    @objc func executeSet(sender: NSMenuItem) {
+        let commands = macroMap[sender.title]?.command
         commands?.forEach { (cmd) in
             cmd.execute()
             print(cmd.path)
