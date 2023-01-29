@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35401DD52982EF2600C215BF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35401DD42982EF2600C215BF /* Constant.swift */; };
 		9E27622E29759DCD00245284 /* MacroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27622D29759DCD00245284 /* MacroController.swift */; };
 		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		35401DD22982E7C300C215BF /* swift-format-configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "swift-format-configuration.json"; sourceTree = "<group>"; };
+		35401DD42982EF2600C215BF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9E27622D29759DCD00245284 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				9F9AB9C5296C736C009A4EEA /* SystemState.swift */,
 				9FAD5D5829715C05003069D1 /* MovingController.swift */,
 				9E27622D29759DCD00245284 /* MacroController.swift */,
+				35401DD42982EF2600C215BF /* Constant.swift */,
 			);
 			path = "background-toy";
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			files = (
 				9F9AB9C6296C736C009A4EEA /* SystemState.swift in Sources */,
 				9F6D94C5296ADE190022579C /* ViewController.swift in Sources */,
+				35401DD52982EF2600C215BF /* Constant.swift in Sources */,
 				9FEFC977296B404900530526 /* StateController.swift in Sources */,
 				9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */,
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
