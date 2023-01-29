@@ -12,10 +12,12 @@ class MacroController {
     struct MacroCommand {
         var name: String
         var path: String
-        var type: String
+        var command: Command?
     }
 
     private var commandSet: [String: [MacroCommand]] = [:]
+    let webCommand = WebCommand()
+    let processCommand = ProcessCommand()
 
     func readMacroData() {
         if let path = Bundle.main.path(forResource: "macro", ofType: "json") {
@@ -35,13 +37,24 @@ class MacroController {
                                 MacroCommand(
                                     name: cmd["name"]!,
                                     path: cmd["path"]!,
-                                    type: cmd["type"]!))
+                                    command: getCommand(type: cmd["type"]!)))
                         }
                     }
                 }
             } catch {
                 print("Fail to read data")
             }
+        }
+    }
+
+    func getCommand(type: String) -> Command? {
+        switch type {
+        case "process":
+            return processCommand
+        case "web":
+            return webCommand
+        default:
+            return nil
         }
     }
 
@@ -68,29 +81,38 @@ class MacroController {
             return
         }
         commands?.forEach { (cmd) in
-            switch cmd.type {
-            case "process":
-                openProgram(target: cmd.path)
-            case "web":
-                if let url = URL(string: cmd.path) {
-                    NSWorkspace.shared.open(url)
-                }
-            default:
-                print("Command type \(cmd.type) not supported.")
+            if cmd.command != nil {
+                cmd.command?.execute(payload: cmd.path)
+            } else {
+                print("[\(cmd.name)]: Command type not supported.")
             }
             print(cmd.path)
         }
     }
+}
 
-    private func openProgram(target: String) {
+class WebCommand: Command {
+    func execute(payload: String) {
+        if let url = URL(string: payload) {
+            NSWorkspace.shared.open(url)
+        }
+    }
+}
+
+class ProcessCommand: Command {
+    func execute(payload: String) {
         let task = Process()
-        let command = "open \(target)"
-        task.arguments = ["-c", command]
+        task.arguments = ["-c", "open \(payload)"]
         task.executableURL = URL(fileURLWithPath: "/bin/zsh")
         do {
             try task.run()
         } catch {
             print(error)
         }
+
     }
+}
+
+protocol Command {
+    func execute(payload: String)
 }
