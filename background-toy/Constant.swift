@@ -5,8 +5,8 @@
 //  Created by jeongukjae on 2023/01/27.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 struct Constant {
     // TODO: extract more hard-coded constants.
@@ -29,5 +29,6 @@ struct Constant {
             .touch: 20,
             .playingcursor: 20,
         ]
+        static let touchThreshold = 10
     }
 }

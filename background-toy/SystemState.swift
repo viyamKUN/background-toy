@@ -18,11 +18,11 @@ class SystemState {
     }
 
     func isTouchingTimeInTouchRange() -> Bool {
-        return touchingTime < 10
+        return touchingTime < Constant.State.touchThreshold
     }
 
     func updateTouchingTime() {
-        if touchingTime >= 10 {
+        if touchingTime >= Constant.State.touchThreshold {
             return
         }
         touchingTime += 1
