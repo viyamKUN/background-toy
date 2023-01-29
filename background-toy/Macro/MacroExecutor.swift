@@ -9,7 +9,12 @@ import Cocoa
 import Foundation
 
 struct Macro {
-    var command: [Command]
+    var tasks: [MacroTask]
+}
+
+struct MacroTask {
+    var command: Command
+    var payload: String
 }
 
 class MacroExecutor {
@@ -28,11 +33,17 @@ class MacroExecutor {
     }
 
     /// Execute macro by menu item's name.
-    @objc func executeSet(sender: NSMenuItem) {
-        let commands = macroMap[sender.title]?.command
-        commands?.forEach { (cmd) in
-            cmd.execute()
-            print(cmd.path)
+    @objc func execute(sender: NSMenuItem) {
+        execute(sender.title)
+    }
+
+    func execute(_ name: String) {
+        if let macro = macroMap[name] {
+            let commands = macro.tasks
+            commands.forEach { (cmd) in
+                cmd.command.execute(cmd.payload)
+                print(cmd.payload)
+            }
         }
     }
 }
@@ -48,11 +59,11 @@ func readMacroData(executor: MacroExecutor) {
                 with: jsonData, options: JSONSerialization.ReadingOptions.mutableLeaves)
             if let jsonResults = resultObject as? [String: [[String: String]]] {
                 for result in jsonResults {
-                    var macro = Macro(command: [])
+                    var macro = Macro(tasks: [])
                     for cmd in result.value {
-                        let command = getCommand(type: cmd["type"]!, payload: cmd["path"]!)
-                        if command != nil {
-                            macro.command.append(command!)
+                        if let command = getCommand(type: cmd["type"]!) {
+                            macro.tasks.append(
+                                MacroTask(command: command, payload: cmd["path"]!))
                         }
                     }
                     executor.registerMacro(result.key, macro)
@@ -64,12 +75,12 @@ func readMacroData(executor: MacroExecutor) {
     }
 }
 
-private func getCommand(type: String, payload: String) -> Command? {
+private func getCommand(type: String) -> Command? {
     switch type {
     case "process":
-        return ProcessCommand(path: payload)
+        return ProcessCommand()
     case "web":
-        return WebCommand(path: payload)
+        return WebCommand()
     default:
         return nil
     }

@@ -143,7 +143,7 @@ private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let macroMap = macroExecutor.listMacros()
     macroMap.forEach { (key, commands) in
         let menu = NSMenuItem(
-            title: key, action: #selector(MacroExecutor.executeSet(sender:)),
+            title: key, action: #selector(MacroExecutor.execute(sender:)),
             keyEquivalent: "")
         menu.target = macroExecutor
         macroMenu.addItem(menu)
