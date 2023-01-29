@@ -9,8 +9,10 @@ import Cocoa
 import Foundation
 
 class MacroController {
-    enum MacroType: String {
-        case process, web
+    struct MacroCommand {
+        var name: String
+        var path: String
+        var type: String
     }
 
     private var commandSet: [String: [MacroCommand]] = [:]
@@ -66,13 +68,15 @@ class MacroController {
             return
         }
         commands?.forEach { (cmd) in
-            switch cmd.getType() {
-            case .process:
+            switch cmd.type {
+            case "process":
                 openProgram(target: cmd.path)
-            case .web:
+            case "web":
                 if let url = URL(string: cmd.path) {
                     NSWorkspace.shared.open(url)
                 }
+            default:
+                print("Command type \(cmd.type) not supported.")
             }
             print(cmd.path)
         }
@@ -87,29 +91,6 @@ class MacroController {
             try task.run()
         } catch {
             print(error)
-        }
-    }
-}
-
-class MacroCommand {
-    var name: String
-    var path: String
-    var type: String
-
-    init(name: String, path: String, type: String) {
-        self.name = name
-        self.path = path
-        self.type = type
-    }
-
-    func getType() -> MacroController.MacroType {
-        switch type {
-        case "process":
-            return .process
-        case "web":
-            return .web
-        default:
-            return .web
         }
     }
 }
