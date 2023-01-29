@@ -32,7 +32,7 @@ class ViewController: NSViewController {
 
         // Set transparent background
         view.window?.isOpaque = false
-        view.window?.backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
+        view.window?.backgroundColor = Constant.Window.backgroundColor
 
         // Read data
         animator.readAnimationData()
