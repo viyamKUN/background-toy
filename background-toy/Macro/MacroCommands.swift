@@ -8,18 +8,37 @@
 import Cocoa
 import Foundation
 
+protocol Command {
+    var path: String { get set }
+
+    init(path: String)
+    func execute()
+}
+
 class WebCommand: Command {
-    func execute(payload: String) {
-        if let url = URL(string: payload) {
+    var path: String
+
+    required init(path: String) {
+        self.path = path
+    }
+
+    func execute() {
+        if let url = URL(string: path) {
             NSWorkspace.shared.open(url)
         }
     }
 }
 
 class ProcessCommand: Command {
-    func execute(payload: String) {
+    var path: String
+
+    required init(path: String) {
+        self.path = path
+    }
+
+    func execute() {
         let task = Process()
-        task.arguments = ["-c", "open \(payload)"]
+        task.arguments = ["-c", "open \(path)"]
         task.executableURL = URL(fileURLWithPath: "/bin/zsh")
         do {
             try task.run()
@@ -28,8 +47,4 @@ class ProcessCommand: Command {
         }
 
     }
-}
-
-protocol Command {
-    func execute(payload: String)
 }

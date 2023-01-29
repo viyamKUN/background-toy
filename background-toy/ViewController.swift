@@ -36,7 +36,7 @@ class ViewController: NSViewController {
 
         // Read data
         animator.readAnimationData()
-        macroExecutor.readMacroData()
+        readMacroData(executor: macroExecutor)
 
         // Add context menu
         let contextMenu = NSMenu()

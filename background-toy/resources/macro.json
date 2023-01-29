@@ -1,19 +1,16 @@
 {
     "테스트1": [
         {
-            "name": "디스코드",
             "path": "/Applications/Discord.app",
             "type": "process"
         },
         {
-            "name": "구글",
             "path": "https://www.google.com/",
             "type": "web"
         }
     ],
     "테스트2": [
         {
-            "name": "네이버",
             "path": "https://www.naver.com/",
             "type": "web"
         }
