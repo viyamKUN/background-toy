@@ -22,12 +22,12 @@ struct Constant {
     }
 
     struct State {
+        enum CharacterState: String {
+            case idle, walk, grab, touch, playingcursor
+        }
         static let stateTimer: [CharacterState: Int] = [
             .touch: 20,
             .playingcursor: 20,
         ]
-        enum CharacterState: String {
-            case idle, walk, grab, touch, playingcursor
-        }
     }
 }
