@@ -13,7 +13,7 @@ class ViewController: NSViewController {
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
-    private let macroController = MacroController()
+    private let macroExecutor = MacroExecutor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +36,13 @@ class ViewController: NSViewController {
 
         // Read data
         animator.readAnimationData()
-        macroController.readMacroData()
+        macroExecutor.readMacroData()
 
         // Add context menu
         let contextMenu = NSMenu()
         let items = createContextMenuItems()
         items.forEach(contextMenu.addItem)
-        macroController.createMacroMenu(nsMenu: contextMenu)
+        macroExecutor.createMacroMenu(nsMenu: contextMenu)
         view.menu = contextMenu
 
         // Add timer

@@ -1,23 +1,24 @@
 //
-//  MacroController.swift
+//  MacroExecutor.swift
 //  background-toy
 //
-//  Created by 윤하연 on 2023/01/16.
+//  Created by 윤하연 on 2023/01/30.
 //
 
 import Cocoa
 import Foundation
 
-class MacroController {
-    struct MacroCommand {
+class MacroExecutor {
+    struct Macro {
         var name: String
         var path: String
         var command: Command?
     }
 
-    private var commandSet: [String: [MacroCommand]] = [:]
-    let webCommand = WebCommand()
-    let processCommand = ProcessCommand()
+    private var commandSet: [String: [Macro]] = [:]
+
+    private let webCommand = WebCommand()
+    private let processCommand = ProcessCommand()
 
     func readMacroData() {
         if let path = Bundle.main.path(forResource: "macro", ofType: "json") {
@@ -33,11 +34,12 @@ class MacroController {
                             if commandSet[result.key] == nil {
                                 commandSet[result.key] = []
                             }
+                            var command = getCommand(type: cmd["type"]!)
                             commandSet[result.key]?.append(
-                                MacroCommand(
+                                Macro(
                                     name: cmd["name"]!,
                                     path: cmd["path"]!,
-                                    command: getCommand(type: cmd["type"]!)))
+                                    command: command))
                         }
                     }
                 }
@@ -47,7 +49,7 @@ class MacroController {
         }
     }
 
-    func getCommand(type: String) -> Command? {
+    private func getCommand(type: String) -> Command? {
         switch type {
         case "process":
             return processCommand
@@ -68,18 +70,15 @@ class MacroController {
         // attack macro menus to main menu
         commandSet.forEach { (key, commands) in
             let menu = NSMenuItem(
-                title: key, action: #selector(MacroController.launchCommand(sender:)),
+                title: key, action: #selector(MacroExecutor.executeSet(sender:)),
                 keyEquivalent: "")
             menu.target = self
             macroMenu.addItem(menu)
         }
     }
 
-    @objc private func launchCommand(sender: NSMenuItem) {
+    @objc private func executeSet(sender: NSMenuItem) {
         let commands = commandSet[sender.title]
-        if commands == nil || commands?.count == 0 {
-            return
-        }
         commands?.forEach { (cmd) in
             if cmd.command != nil {
                 cmd.command?.execute(payload: cmd.path)
@@ -89,30 +88,4 @@ class MacroController {
             print(cmd.path)
         }
     }
-}
-
-class WebCommand: Command {
-    func execute(payload: String) {
-        if let url = URL(string: payload) {
-            NSWorkspace.shared.open(url)
-        }
-    }
-}
-
-class ProcessCommand: Command {
-    func execute(payload: String) {
-        let task = Process()
-        task.arguments = ["-c", "open \(payload)"]
-        task.executableURL = URL(fileURLWithPath: "/bin/zsh")
-        do {
-            try task.run()
-        } catch {
-            print(error)
-        }
-
-    }
-}
-
-protocol Command {
-    func execute(payload: String)
 }
