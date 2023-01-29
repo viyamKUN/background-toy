@@ -12,6 +12,7 @@ struct Macro {
     var command: [Command]
 }
 
+/// Execute macro by menu item's name
 class MacroExecutor {
     private var commandMap: [String: Macro] = [:]
 
@@ -45,6 +46,7 @@ class MacroExecutor {
     }
 }
 
+/// Read macro data from local json file.
 func readMacroData(executor: MacroExecutor) {
     if let path = Bundle.main.path(forResource: "macro", ofType: "json") {
         do {
