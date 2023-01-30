@@ -9,7 +9,6 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    private let systemState = SystemState()
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
     private var characterState = CharacterState(
@@ -78,27 +77,27 @@ class ViewController: NSViewController {
 
     override func mouseDragged(with event: NSEvent) {
         view.window?.performDrag(with: event)
-        systemState.isOnDragging = true
+        characterState.isOnDragging = true
     }
 
     override func mouseUp(with event: NSEvent) {
-        if systemState.isOnDragging {
-            systemState.isOnDragging = false
-        } else if systemState.isTouchingTimeInTouchRange() {
-            systemState.isTouched = true
+        if characterState.isOnDragging {
+            characterState.isOnDragging = false
+        } else if characterState.isTouchingTimeInTouchRange() {
+            characterState.isTouched = true
         }
     }
 
     override func mouseDown(with event: NSEvent) {
-        systemState.touchingTime = 0
+        characterState.touchingTime = 0
     }
 
     override func mouseEntered(with event: NSEvent) {
-        systemState.isHover = true
+        characterState.isHover = true
     }
 
     override func mouseExited(with event: NSEvent) {
-        systemState.isHover = false
+        characterState.isHover = false
     }
 
     @objc func quit(sender: NSMenuItem) {
@@ -123,12 +122,13 @@ class ViewController: NSViewController {
 
     @objc func updateEveryTick() {
         // update system state
-        systemState.updateTouchingTime()
+        if characterState.touchingTime < Constant.State.touchThreshold {
+            characterState.touchingTime += 1
+        }
 
         // update character state
         let newState = characterStateUpdater.getUpdateState(
-            currentState: characterState.currentState,
-            systemState: systemState,
+            systemState: characterState,
             doNotDisturb: characterState.doNotDisturb)
         characterState.currentState = newState
 
@@ -154,7 +154,7 @@ class ViewController: NSViewController {
 
         // Resets
         characterStateUpdater.resetEveryTick()
-        systemState.resetEveryTick()
+        characterState.isTouched = false
     }
 }
 

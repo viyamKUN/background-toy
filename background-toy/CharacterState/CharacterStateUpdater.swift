@@ -13,10 +13,11 @@ class CharacterStateUpdater {
     var isTimerOn: Bool = false
 
     func getUpdateState(
-        currentState: Constant.State.CharacterState, systemState: SystemState, doNotDisturb: Bool
+        systemState: CharacterState, doNotDisturb: Bool
     )
         -> Constant.State.CharacterState
     {
+        let currentState = systemState.currentState
         var newState = currentState
 
         // Update states by system.
