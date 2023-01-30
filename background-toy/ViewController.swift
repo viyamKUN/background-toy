@@ -12,6 +12,8 @@ class ViewController: NSViewController {
     private let systemState = SystemState()
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
+    private var characterState = CharacterState(
+        currentState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
@@ -113,16 +115,25 @@ class ViewController: NSViewController {
         }
     }
 
+    @objc func changeDisturbOption(sender: NSMenuItem) {
+        let isOn = sender.state == NSControl.StateValue.on
+        sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
+        characterState.doNotDisturb = isOn
+    }
+
     @objc func updateEveryTick() {
         // update system state
         systemState.updateTouchingTime()
 
         // update character state
-        characterStateUpdater.updateState(
+        let newState = characterStateUpdater.getUpdateState(
+            currentState: characterState.currentState,
             systemState: systemState)
+        characterState.currentState = newState
 
         // update window position
-        if characterStateUpdater.compareCurrentState(.walk) {
+        let isWalk = characterState.currentState == .walk
+        if isWalk {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
                     window: window,
@@ -132,7 +143,7 @@ class ViewController: NSViewController {
 
         // update character image
         if let imagePath = animator.getUpdatedImagePath(
-            animationName: characterStateUpdater.currentState.rawValue,
+            animationName: characterState.currentState.rawValue,
             isUpdated: characterStateUpdater.isUpdated,
             tickInterval: Constant.Animation.tickInterval)
         {
@@ -154,10 +165,13 @@ private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
         title: "최상단으로", action: #selector(ViewController.changeTopmostOption(sender:)),
         keyEquivalent: "")
     topmost.state = NSControl.StateValue.on
+    let doNotDisturb = NSMenuItem(
+        title: "방해금지", action: #selector(ViewController.changeDisturbOption(sender:)),
+        keyEquivalent: "")
     let quit = NSMenuItem(
         title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
 
-    let items = [topmost, quit]
+    let items = [topmost, doNotDisturb, quit]
     items.forEach(contextMenu.addItem)
 
     // Create macro menu items
