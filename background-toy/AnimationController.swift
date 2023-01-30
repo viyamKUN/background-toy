@@ -21,8 +21,8 @@ class AnimationController {
 
     func registerAnimation(_ animation: Animation) {
         spriteFolderPath = animation.spriteFolderPath
-        for clip in animation.clips {
-            registerClip(clip.name, clip)
+        for (name, clip) in animation.clips {
+            registerClip(name, clip)
         }
     }
 

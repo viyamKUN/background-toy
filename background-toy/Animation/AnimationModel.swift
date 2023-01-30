@@ -12,10 +12,9 @@ struct Animation: Decodable {
     var clips: Clips
 }
 
-typealias Clips = [Clip]
+typealias Clips = [String: Clip]
 
 struct Clip: Decodable {
-    var name: String
     var count: Int
     var playType: String
 }
