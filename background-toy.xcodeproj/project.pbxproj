@@ -14,8 +14,10 @@
 		9E78AA522987EDB200A00E48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA512987EDB200A00E48 /* Model.swift */; };
 		9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */; };
 		9E78AA572987F44800A00E48 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA562987F44800A00E48 /* Errors.swift */; };
+		9E78AA5B298812F900A00E48 /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5A298812F900A00E48 /* AnimationModel.swift */; };
+		9E78AA5D2988132900A00E48 /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E78AA5C2988132900A00E48 /* animation.json */; };
+		9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5F2988218000A00E48 /* AnimatorTests.swift */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
-		9ECD13A02980405C00F1B0B1 /* animation.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD139F2980405C00F1B0B1 /* animation.csv */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
 		9F6D94C5296ADE190022579C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* ViewController.swift */; };
 		9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6D94C6296ADE1A0022579C /* Assets.xcassets */; };
@@ -26,7 +28,7 @@
 		9F9496CA296ADE7300707009 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F9496C9296ADE7300707009 /* .gitignore */; };
 		9F9AB9C6296C736C009A4EEA /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9AB9C5296C736C009A4EEA /* SystemState.swift */; };
 		9FAD5D5929715C05003069D1 /* MovingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD5D5829715C05003069D1 /* MovingController.swift */; };
-		9FEFC975296B365B00530526 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC974296B365B00530526 /* AnimationController.swift */; };
+		9FEFC975296B365B00530526 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC974296B365B00530526 /* Animator.swift */; };
 		9FEFC977296B404900530526 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC976296B404900530526 /* StateController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +58,10 @@
 		9E78AA512987EDB200A00E48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutorTests.swift; sourceTree = "<group>"; };
 		9E78AA562987F44800A00E48 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		9E78AA5A298812F900A00E48 /* AnimationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModel.swift; sourceTree = "<group>"; };
+		9E78AA5C2988132900A00E48 /* animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
+		9E78AA5F2988218000A00E48 /* AnimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorTests.swift; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
-		9ECD139F2980405C00F1B0B1 /* animation.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = animation.csv; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94C2296ADE190022579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F6D94C4296ADE190022579C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +76,7 @@
 		9F9496C9296ADE7300707009 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9F9AB9C5296C736C009A4EEA /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
 		9FAD5D5829715C05003069D1 /* MovingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingController.swift; sourceTree = "<group>"; };
-		9FEFC974296B365B00530526 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		9FEFC974296B365B00530526 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		9FEFC976296B404900530526 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				9E70FCAF29802F24000C787C /* macro.json */,
-				9ECD139F2980405C00F1B0B1 /* animation.csv */,
+				9E78AA5C2988132900A00E48 /* animation.json */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -126,6 +130,23 @@
 				9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */,
 			);
 			path = Macro;
+			sourceTree = "<group>";
+		};
+		9E78AA58298812DE00A00E48 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9FEFC974296B365B00530526 /* Animator.swift */,
+				9E78AA5A298812F900A00E48 /* AnimationModel.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		9E78AA5E2988216900A00E48 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9E78AA5F2988218000A00E48 /* AnimatorTests.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		9E8A07E62973F59900C237F1 /* Extensions */ = {
@@ -161,6 +182,7 @@
 		9F6D94C1296ADE190022579C /* background-toy */ = {
 			isa = PBXGroup;
 			children = (
+				9E78AA58298812DE00A00E48 /* Animation */,
 				9E2B501C2986C83C00D2AE28 /* Macro */,
 				9E70FCAE29802ECF000C787C /* resources */,
 				9E8A07E62973F59900C237F1 /* Extensions */,
@@ -169,7 +191,6 @@
 				9F6D94C6296ADE1A0022579C /* Assets.xcassets */,
 				9F6D94C8296ADE1A0022579C /* Main.storyboard */,
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
-				9FEFC974296B365B00530526 /* AnimationController.swift */,
 				9FEFC976296B404900530526 /* StateController.swift */,
 				9F9AB9C5296C736C009A4EEA /* SystemState.swift */,
 				9FAD5D5829715C05003069D1 /* MovingController.swift */,
@@ -182,6 +203,7 @@
 		9F6D94D3296ADE1B0022579C /* background-toyTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E78AA5E2988216900A00E48 /* Animation */,
 				9E78AA532987EFE400A00E48 /* Macro */,
 				9F6D94D4296ADE1B0022579C /* background_toyTests.swift */,
 			);
@@ -305,8 +327,8 @@
 			files = (
 				9E70FCB029802F24000C787C /* macro.json in Resources */,
 				9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */,
-				9ECD13A02980405C00F1B0B1 /* animation.csv in Resources */,
 				9F9496CA296ADE7300707009 /* .gitignore in Resources */,
+				9E78AA5D2988132900A00E48 /* animation.json in Resources */,
 				9F6D94CA296ADE1A0022579C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,10 +403,11 @@
 				9E78AA522987EDB200A00E48 /* Model.swift in Sources */,
 				9E78AA572987F44800A00E48 /* Errors.swift in Sources */,
 				35401DD52982EF2600C215BF /* Constant.swift in Sources */,
+				9E78AA5B298812F900A00E48 /* AnimationModel.swift in Sources */,
 				9FEFC977296B404900530526 /* StateController.swift in Sources */,
 				9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */,
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
-				9FEFC975296B365B00530526 /* AnimationController.swift in Sources */,
+				9FEFC975296B365B00530526 /* Animator.swift in Sources */,
 				9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */,
 				9FAD5D5929715C05003069D1 /* MovingController.swift in Sources */,
 			);
@@ -395,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */,
+				9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */,
 				9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

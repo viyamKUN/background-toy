@@ -1,0 +1,25 @@
+{
+    "spriteFolderPath": "default",
+    "clips": {
+        "idle": {
+            "count": 3,
+            "playType": "pingpong"
+        },
+        "walk": {
+            "count": 7,
+            "playType": "restart"
+        },
+        "grab": {
+            "count": 3,
+            "playType": "pingpong"
+        },
+        "touch": {
+            "count": 2,
+            "playType": "restart"
+        },
+        "playingcursor": {
+            "count": 6,
+            "playType": "restart"
+        }
+    }
+}

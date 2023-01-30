@@ -1,6 +1,0 @@
-name,count,playtype
-idle,3,pingpong
-walk,7,restart
-grab,3,pingpong
-touch,2,restart
-playingcursor,6,restart

@@ -9,10 +9,10 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    private let animator = AnimationController()
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
+    private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
     override func viewDidLoad() {
@@ -35,8 +35,8 @@ class ViewController: NSViewController {
         view.window?.backgroundColor = Constant.Window.backgroundColor
 
         // Read data
-        animator.readAnimationData()
         do {
+            animator = try newAnimator()
             macroExecutor = try newMacroExecutor()
         } catch {
             print("Error info: \(error)")
@@ -113,12 +113,14 @@ class ViewController: NSViewController {
         movingController.updatePosition(
             window: view.window,
             stateController: stateController)
-        animator.updateImage(
-            imageView: characterImageView,
+        if let imagePath = animator.getUpdatedImagePath(
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
-            tickInterval: Constant.Animation.tickInterval,
-            isFlipped: movingController.isFlipped())
+            tickInterval: Constant.Animation.tickInterval)
+        {
+            characterImageView.image = NSImage(named: imagePath)?.flipped(
+                flipHorizontally: movingController.isFlipped())
+        }
 
         // Resets
         stateController.resetEveryTick()
