@@ -13,7 +13,7 @@ class ViewController: NSViewController {
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
-    private let macroExecutor = MacroExecutor()
+    private var macroExecutor: MacroExecutor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,11 @@ class ViewController: NSViewController {
 
         // Read data
         animator.readAnimationData()
-        readMacroData(executor: macroExecutor)
+        do {
+            macroExecutor = try newMacroExecutor()
+        } catch {
+            print("Error info: \(error)")
+        }
 
         // Add context menu
         view.menu = createMenu(macroExecutor)

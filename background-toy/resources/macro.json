@@ -1,18 +1,18 @@
 {
     "테스트1": [
         {
-            "path": "/Applications/Discord.app",
-            "type": "process"
+            "type": "process",
+            "payload": "/Applications/Discord.app"
         },
         {
-            "path": "https://www.google.com/",
-            "type": "web"
+            "type": "web",
+            "payload": "https://www.google.com/"
         }
     ],
     "테스트2": [
         {
-            "path": "https://www.naver.com/",
-            "type": "web"
+            "type": "web",
+            "payload": "https://www.naver.com/"
         }
     ]
 }

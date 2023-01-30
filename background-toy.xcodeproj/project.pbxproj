@@ -11,6 +11,9 @@
 		9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27622D29759DCD00245284 /* MacroCommands.swift */; };
 		9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */; };
 		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
+		9E78AA522987EDB200A00E48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA512987EDB200A00E48 /* Model.swift */; };
+		9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */; };
+		9E78AA572987F44800A00E48 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA562987F44800A00E48 /* Errors.swift */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
 		9ECD13A02980405C00F1B0B1 /* animation.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD139F2980405C00F1B0B1 /* animation.csv */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
@@ -50,6 +53,9 @@
 		9E27622D29759DCD00245284 /* MacroCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroCommands.swift; sourceTree = "<group>"; };
 		9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutor.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
+		9E78AA512987EDB200A00E48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutorTests.swift; sourceTree = "<group>"; };
+		9E78AA562987F44800A00E48 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		9ECD139F2980405C00F1B0B1 /* animation.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = animation.csv; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +106,7 @@
 			children = (
 				9E27622D29759DCD00245284 /* MacroCommands.swift */,
 				9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */,
+				9E78AA512987EDB200A00E48 /* Model.swift */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -111,6 +118,14 @@
 				9ECD139F2980405C00F1B0B1 /* animation.csv */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		9E78AA532987EFE400A00E48 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */,
+			);
+			path = Macro;
 			sourceTree = "<group>";
 		};
 		9E8A07E62973F59900C237F1 /* Extensions */ = {
@@ -159,6 +174,7 @@
 				9F9AB9C5296C736C009A4EEA /* SystemState.swift */,
 				9FAD5D5829715C05003069D1 /* MovingController.swift */,
 				35401DD42982EF2600C215BF /* Constant.swift */,
+				9E78AA562987F44800A00E48 /* Errors.swift */,
 			);
 			path = "background-toy";
 			sourceTree = "<group>";
@@ -166,6 +182,7 @@
 		9F6D94D3296ADE1B0022579C /* background-toyTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E78AA532987EFE400A00E48 /* Macro */,
 				9F6D94D4296ADE1B0022579C /* background_toyTests.swift */,
 			);
 			path = "background-toyTests";
@@ -361,6 +378,8 @@
 				9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */,
 				9F9AB9C6296C736C009A4EEA /* SystemState.swift in Sources */,
 				9F6D94C5296ADE190022579C /* ViewController.swift in Sources */,
+				9E78AA522987EDB200A00E48 /* Model.swift in Sources */,
+				9E78AA572987F44800A00E48 /* Errors.swift in Sources */,
 				35401DD52982EF2600C215BF /* Constant.swift in Sources */,
 				9FEFC977296B404900530526 /* StateController.swift in Sources */,
 				9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */,
@@ -376,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */,
+				9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
