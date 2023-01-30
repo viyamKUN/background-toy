@@ -1,5 +1,5 @@
 //
-//  StateController.swift
+//  CharacterStateUpdater.swift
 //  background-toy
 //
 //  Created by 윤하연 on 2023/01/09.
