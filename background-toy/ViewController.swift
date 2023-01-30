@@ -11,7 +11,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     private let stateController = StateController()
     private let systemState = SystemState()
-    private let positionUpdater = PositionUpdater()
+    private let windowPositionUpdater = WindowPositionUpdater()
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
@@ -114,7 +114,7 @@ class ViewController: NSViewController {
         let isWalking = stateController.currentState == .walk
         if isWalking {
             if let window = view.window {
-                positionUpdater.updatePosition(
+                windowPositionUpdater.updatePosition(
                     window: window,
                     isStateUpdated: stateController.isUpdated)
             }
@@ -125,7 +125,7 @@ class ViewController: NSViewController {
             tickInterval: Constant.Animation.tickInterval)
         {
             characterImageView.image = NSImage(named: imagePath)?.flipped(
-                flipHorizontally: positionUpdater.isFlipped())
+                flipHorizontally: windowPositionUpdater.isFlipped())
         }
 
         // Resets

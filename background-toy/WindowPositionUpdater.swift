@@ -8,7 +8,7 @@
 import Cocoa
 import Foundation
 
-class PositionUpdater {
+class WindowPositionUpdater {
     private var direction = NSPoint(x: 1, y: 1)
 
     func isFlipped() -> Bool {

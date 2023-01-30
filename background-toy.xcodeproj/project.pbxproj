@@ -27,7 +27,7 @@
 		9F6D94E1296ADE1B0022579C /* background_toyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */; };
 		9F9496CA296ADE7300707009 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F9496C9296ADE7300707009 /* .gitignore */; };
 		9F9AB9C6296C736C009A4EEA /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9AB9C5296C736C009A4EEA /* SystemState.swift */; };
-		9FAD5D5929715C05003069D1 /* PositionUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD5D5829715C05003069D1 /* PositionUpdater.swift */; };
+		9FAD5D5929715C05003069D1 /* WindowPositionUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */; };
 		9FEFC975296B365B00530526 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC974296B365B00530526 /* Animator.swift */; };
 		9FEFC977296B404900530526 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC976296B404900530526 /* StateController.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +75,7 @@
 		9F6D94E0296ADE1B0022579C /* background_toyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background_toyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F9496C9296ADE7300707009 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9F9AB9C5296C736C009A4EEA /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
-		9FAD5D5829715C05003069D1 /* PositionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionUpdater.swift; sourceTree = "<group>"; };
+		9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPositionUpdater.swift; sourceTree = "<group>"; };
 		9FEFC974296B365B00530526 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		9FEFC976296B404900530526 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,7 +193,7 @@
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
 				9FEFC976296B404900530526 /* StateController.swift */,
 				9F9AB9C5296C736C009A4EEA /* SystemState.swift */,
-				9FAD5D5829715C05003069D1 /* PositionUpdater.swift */,
+				9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */,
 				35401DD42982EF2600C215BF /* Constant.swift */,
 				9E78AA562987F44800A00E48 /* Errors.swift */,
 			);
@@ -409,7 +409,7 @@
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
 				9FEFC975296B365B00530526 /* Animator.swift in Sources */,
 				9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */,
-				9FAD5D5929715C05003069D1 /* PositionUpdater.swift in Sources */,
+				9FAD5D5929715C05003069D1 /* WindowPositionUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
