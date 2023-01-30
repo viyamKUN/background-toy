@@ -104,13 +104,14 @@ class ViewController: NSViewController {
     }
 
     @objc func updateEveryTick() {
-        // update system
+        // update system state
         systemState.updateTouchingTime()
 
-        // update controllers
+        // update state
         stateController.updateState(
             systemState: systemState)
 
+        // update window position
         if stateController.compareCurrentState(.walk) {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
@@ -118,6 +119,8 @@ class ViewController: NSViewController {
                     isStateUpdated: stateController.isUpdated)
             }
         }
+
+        // update character image
         if let imagePath = animator.getUpdatedImagePath(
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
