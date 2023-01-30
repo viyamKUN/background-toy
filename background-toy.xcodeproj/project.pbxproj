@@ -16,6 +16,7 @@
 		9E78AA572987F44800A00E48 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA562987F44800A00E48 /* Errors.swift */; };
 		9E78AA5B298812F900A00E48 /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5A298812F900A00E48 /* AnimationModel.swift */; };
 		9E78AA5D2988132900A00E48 /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E78AA5C2988132900A00E48 /* animation.json */; };
+		9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5F2988218000A00E48 /* AnimatorTests.swift */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
 		9F6D94C5296ADE190022579C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* ViewController.swift */; };
@@ -59,6 +60,7 @@
 		9E78AA562987F44800A00E48 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		9E78AA5A298812F900A00E48 /* AnimationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModel.swift; sourceTree = "<group>"; };
 		9E78AA5C2988132900A00E48 /* animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
+		9E78AA5F2988218000A00E48 /* AnimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorTests.swift; sourceTree = "<group>"; };
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94C2296ADE190022579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		9E78AA5E2988216900A00E48 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9E78AA5F2988218000A00E48 /* AnimatorTests.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		9E8A07E62973F59900C237F1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 		9F6D94D3296ADE1B0022579C /* background-toyTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E78AA5E2988216900A00E48 /* Animation */,
 				9E78AA532987EFE400A00E48 /* Macro */,
 				9F6D94D4296ADE1B0022579C /* background_toyTests.swift */,
 			);
@@ -407,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */,
+				9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */,
 				9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

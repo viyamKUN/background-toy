@@ -19,6 +19,10 @@ class Animator {
         self.clipMap = clipMap
     }
 
+    func getClip(_ name: String) -> Clip? {
+        return clipMap[name]
+    }
+
     func getUpdatedImagePath(
         animationName: String,
         isUpdated: Bool,
@@ -37,7 +41,7 @@ class Animator {
         }
 
         // Change image.
-        if let info = clipMap[animationName] {
+        if let info = getClip(animationName) {
             switch info.playType {
             case "restart":
                 index = (index + 1) % info.count
