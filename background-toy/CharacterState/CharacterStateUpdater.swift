@@ -12,7 +12,9 @@ class CharacterStateUpdater {
     var timer: Int = 0  // tick count
     var isTimerOn: Bool = false
 
-    func getUpdateState(currentState: Constant.State.CharacterState, systemState: SystemState)
+    func getUpdateState(
+        currentState: Constant.State.CharacterState, systemState: SystemState, doNotDisturb: Bool
+    )
         -> Constant.State.CharacterState
     {
         var newState = currentState
@@ -41,7 +43,12 @@ class CharacterStateUpdater {
                 turnOffTimer()
             }
         } else {
-            let walkOrIdle: Constant.State.CharacterState = Bool.random() ? .walk : .idle
+            var walkOrIdle = Constant.State.CharacterState.idle
+            if doNotDisturb {
+                walkOrIdle = .idle
+            } else {
+                walkOrIdle = Bool.random() ? .walk : .idle
+            }
             if walkOrIdle != currentState {
                 newState = walkOrIdle
                 let timer = Int.random(in: 50...70)

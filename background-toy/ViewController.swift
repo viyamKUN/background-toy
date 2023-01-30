@@ -118,7 +118,7 @@ class ViewController: NSViewController {
     @objc func changeDisturbOption(sender: NSMenuItem) {
         let isOn = sender.state == NSControl.StateValue.on
         sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
-        characterState.doNotDisturb = isOn
+        characterState.doNotDisturb = !isOn
     }
 
     @objc func updateEveryTick() {
@@ -128,7 +128,8 @@ class ViewController: NSViewController {
         // update character state
         let newState = characterStateUpdater.getUpdateState(
             currentState: characterState.currentState,
-            systemState: systemState)
+            systemState: systemState,
+            doNotDisturb: characterState.doNotDisturb)
         characterState.currentState = newState
 
         // update window position
