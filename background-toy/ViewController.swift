@@ -9,9 +9,10 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    private let systemState = SystemState()
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
+    private var systemState = SystemState(
+        characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
@@ -103,16 +104,37 @@ class ViewController: NSViewController {
         NSApp.terminate(self)
     }
 
+    @objc func changeTopmostOption(sender: NSMenuItem) {
+        let isOn = sender.state == NSControl.StateValue.on
+        sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
+        if isOn {
+            view.window?.level = .normal
+        } else {
+            view.window?.level = .floating
+        }
+    }
+
+    @objc func changeDisturbOption(sender: NSMenuItem) {
+        let isOn = sender.state == NSControl.StateValue.on
+        sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
+        systemState.doNotDisturb = !isOn
+    }
+
     @objc func updateEveryTick() {
         // update system state
-        systemState.updateTouchingTime()
+        if systemState.touchingTime < Constant.State.touchThreshold {
+            systemState.touchingTime += 1
+        }
 
         // update character state
-        characterStateUpdater.updateState(
-            systemState: systemState)
+        let newState = characterStateUpdater.getUpdatedState(
+            systemState: systemState,
+            doNotDisturb: systemState.doNotDisturb)
+        systemState.characterState = newState
 
         // update window position
-        if characterStateUpdater.compareCurrentState(.walk) {
+        let isWalk = systemState.characterState == .walk
+        if isWalk {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
                     window: window,
@@ -122,7 +144,7 @@ class ViewController: NSViewController {
 
         // update character image
         if let imagePath = animator.getUpdatedImagePath(
-            animationName: characterStateUpdater.currentState.rawValue,
+            animationName: systemState.characterState.rawValue,
             isUpdated: characterStateUpdater.isUpdated,
             tickInterval: Constant.Animation.tickInterval)
         {
@@ -132,7 +154,7 @@ class ViewController: NSViewController {
 
         // Resets
         characterStateUpdater.resetEveryTick()
-        systemState.resetEveryTick()
+        systemState.isTouched = false
     }
 }
 
@@ -140,11 +162,17 @@ class ViewController: NSViewController {
 private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let contextMenu = NSMenu()
 
+    let topmost = NSMenuItem(
+        title: "최상단으로", action: #selector(ViewController.changeTopmostOption(sender:)),
+        keyEquivalent: "")
+    topmost.state = NSControl.StateValue.on
+    let doNotDisturb = NSMenuItem(
+        title: "방해금지", action: #selector(ViewController.changeDisturbOption(sender:)),
+        keyEquivalent: "")
     let quit = NSMenuItem(
         title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
-    // TODO: Add more menu items
 
-    let items = [quit]
+    let items = [topmost, doNotDisturb, quit]
     items.forEach(contextMenu.addItem)
 
     // Create macro menu items
