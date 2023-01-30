@@ -13,6 +13,10 @@ class StateController {
     var timer: Int = 0  // tick count
     var isTimerOn: Bool = false
 
+    func compareCurrentState(_ target: Constant.State.CharacterState) -> Bool {
+        return currentState == target
+    }
+
     func updateState(systemState: SystemState) {
         // Update states by system.
         if systemState.isOnDragging {
@@ -52,12 +56,12 @@ class StateController {
         turnOffTimer()
     }
 
-    func turnOffTimer() {
-        timer = 0
+    private func turnOffTimer() {
         isTimerOn = false
+        timer = 0
     }
 
-    func setTimer(tick: Int) {
+    private func setTimer(tick: Int) {
         isTimerOn = true
         timer = tick
     }
