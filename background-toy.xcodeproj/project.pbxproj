@@ -29,7 +29,7 @@
 		9F9AB9C6296C736C009A4EEA /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9AB9C5296C736C009A4EEA /* SystemState.swift */; };
 		9FAD5D5929715C05003069D1 /* WindowPositionUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */; };
 		9FEFC975296B365B00530526 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC974296B365B00530526 /* Animator.swift */; };
-		9FEFC977296B404900530526 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC976296B404900530526 /* StateController.swift */; };
+		9FEFC977296B404900530526 /* CharacterStateUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC976296B404900530526 /* CharacterStateUpdater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 		9F9AB9C5296C736C009A4EEA /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
 		9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPositionUpdater.swift; sourceTree = "<group>"; };
 		9FEFC974296B365B00530526 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		9FEFC976296B404900530526 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		9FEFC976296B404900530526 /* CharacterStateUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStateUpdater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +191,7 @@
 				9F6D94C6296ADE1A0022579C /* Assets.xcassets */,
 				9F6D94C8296ADE1A0022579C /* Main.storyboard */,
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
-				9FEFC976296B404900530526 /* StateController.swift */,
+				9FEFC976296B404900530526 /* CharacterStateUpdater.swift */,
 				9F9AB9C5296C736C009A4EEA /* SystemState.swift */,
 				9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */,
 				35401DD42982EF2600C215BF /* Constant.swift */,
@@ -404,7 +404,7 @@
 				9E78AA572987F44800A00E48 /* Errors.swift in Sources */,
 				35401DD52982EF2600C215BF /* Constant.swift in Sources */,
 				9E78AA5B298812F900A00E48 /* AnimationModel.swift in Sources */,
-				9FEFC977296B404900530526 /* StateController.swift in Sources */,
+				9FEFC977296B404900530526 /* CharacterStateUpdater.swift in Sources */,
 				9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */,
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
 				9FEFC975296B365B00530526 /* Animator.swift in Sources */,
