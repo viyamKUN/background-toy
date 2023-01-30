@@ -14,15 +14,9 @@ class Animator {
     private var adder = 1
     private var tickCount: Double = 0
 
-    private func registerClip(_ name: String, _ clip: Clip) {
-        clipMap[name] = clip
-    }
-
-    func registerAnimation(_ animation: Animation) {
-        spriteFolderPath = animation.spriteFolderPath
-        for (name, clip) in animation.clips {
-            registerClip(name, clip)
-        }
+    init(spriteFolderPath: String, clipMap: [String: Clip]) {
+        self.spriteFolderPath = spriteFolderPath
+        self.clipMap = clipMap
     }
 
     func getUpdatedImagePath(
@@ -84,7 +78,6 @@ func newAnimatorFromJSONString(_ s: String) throws -> Animator {
     guard let jsonData = s.data(using: .utf8) else { throw BTError.invalidData }
     let animation = try decoder.decode(Animation.self, from: jsonData)
 
-    let animator = Animator()
-    animator.registerAnimation(animation)
+    let animator = Animator(spriteFolderPath: animation.spriteFolderPath, clipMap: animation.clips)
     return animator
 }

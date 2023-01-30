@@ -11,14 +11,8 @@ import Foundation
 class MacroExecutor {
     private var macroMap: MacroMap = [:]
 
-    func registerMacro(_ name: String, _ macro: Macro) {
-        macroMap[name] = macro
-    }
-
-    func registerMacros(_ macroMap: MacroMap) {
-        for (name, macro) in macroMap {
-            registerMacro(name, macro)
-        }
+    init(macroMap: MacroMap) {
+        self.macroMap = macroMap
     }
 
     func listMacros() -> [(String, Macro)] {
@@ -72,10 +66,7 @@ func newMacroExecutorFromJSONString(_ s: String) throws -> MacroExecutor {
     let decoder = JSONDecoder()
     guard let jsonData = s.data(using: .utf8) else { throw BTError.invalidData }
     let macroMap = try decoder.decode(MacroMap.self, from: jsonData)
-
-    let executor = MacroExecutor()
-    executor.registerMacros(macroMap)
-    return executor
+    return MacroExecutor(macroMap: macroMap)
 }
 
 private func getCommand(_ type: String) throws -> Command {
