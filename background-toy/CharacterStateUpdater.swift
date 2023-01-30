@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StateController {
+class CharacterStateUpdater {
     var currentState: Constant.State.CharacterState = .idle
     var isUpdated: Bool = true
     var timer: Int = 0  // tick count

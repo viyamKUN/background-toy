@@ -9,8 +9,8 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    private let stateController = StateController()
     private let systemState = SystemState()
+    private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
@@ -107,23 +107,23 @@ class ViewController: NSViewController {
         // update system state
         systemState.updateTouchingTime()
 
-        // update state
-        stateController.updateState(
+        // update character state
+        characterStateUpdater.updateState(
             systemState: systemState)
 
         // update window position
-        if stateController.compareCurrentState(.walk) {
+        if characterStateUpdater.compareCurrentState(.walk) {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
                     window: window,
-                    isStateUpdated: stateController.isUpdated)
+                    isStateUpdated: characterStateUpdater.isUpdated)
             }
         }
 
         // update character image
         if let imagePath = animator.getUpdatedImagePath(
-            animationName: stateController.currentState.rawValue,
-            isUpdated: stateController.isUpdated,
+            animationName: characterStateUpdater.currentState.rawValue,
+            isUpdated: characterStateUpdater.isUpdated,
             tickInterval: Constant.Animation.tickInterval)
         {
             characterImageView.image = NSImage(named: imagePath)?.flipped(
@@ -131,7 +131,7 @@ class ViewController: NSViewController {
         }
 
         // Resets
-        stateController.resetEveryTick()
+        characterStateUpdater.resetEveryTick()
         systemState.resetEveryTick()
     }
 }
