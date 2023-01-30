@@ -1,21 +1,18 @@
 {
     "테스트1": [
         {
-            "name": "디스코드",
-            "path": "/Applications/Discord.app",
-            "type": "process"
+            "type": "process",
+            "payload": "/Applications/Discord.app"
         },
         {
-            "name": "구글",
-            "path": "https://www.google.com/",
-            "type": "web"
+            "type": "web",
+            "payload": "https://www.google.com/"
         }
     ],
     "테스트2": [
         {
-            "name": "네이버",
-            "path": "https://www.naver.com/",
-            "type": "web"
+            "type": "web",
+            "payload": "https://www.naver.com/"
         }
     ]
 }

@@ -13,7 +13,7 @@ class ViewController: NSViewController {
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
-    private let macroController = MacroController()
+    private var macroExecutor: MacroExecutor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +36,14 @@ class ViewController: NSViewController {
 
         // Read data
         animator.readAnimationData()
-        macroController.readMacroData()
+        do {
+            macroExecutor = try newMacroExecutor()
+        } catch {
+            print("Error info: \(error)")
+        }
 
         // Add context menu
-        let contextMenu = NSMenu()
-        let items = createContextMenuItems()
-        items.forEach(contextMenu.addItem)
-        macroController.createMacroMenu(nsMenu: contextMenu)
-        view.menu = contextMenu
+        view.menu = createMenu(macroExecutor)
 
         // Add timer
         let timer = Timer(
@@ -99,12 +99,6 @@ class ViewController: NSViewController {
         systemState.isHover = false
     }
 
-    func createContextMenuItems() -> [NSMenuItem] {
-        let quit = NSMenuItem(
-            title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
-        return [quit]
-    }
-
     @objc func quit(sender: NSMenuItem) {
         NSApp.terminate(self)
     }
@@ -130,4 +124,34 @@ class ViewController: NSViewController {
         stateController.resetEveryTick()
         systemState.resetEveryTick()
     }
+}
+
+/// Create NSMenu and add menu items.
+private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
+    let contextMenu = NSMenu()
+
+    let quit = NSMenuItem(
+        title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
+    // TODO: Add more menu items
+
+    let items = [quit]
+    items.forEach(contextMenu.addItem)
+
+    // Create macro menu items
+    let macroMenu = NSMenu()
+    let macroDropDown = NSMenuItem(title: "Macro", action: nil, keyEquivalent: "")
+    contextMenu.addItem(macroDropDown)
+    contextMenu.setSubmenu(macroMenu, for: macroDropDown)
+
+    // Attach macro menus to main menu
+    let macroMap = macroExecutor.listMacros()
+    macroMap.forEach { (key, commands) in
+        let menu = NSMenuItem(
+            title: key, action: #selector(MacroExecutor.execute(sender:)),
+            keyEquivalent: "")
+        menu.target = macroExecutor
+        macroMenu.addItem(menu)
+    }
+
+    return contextMenu
 }
