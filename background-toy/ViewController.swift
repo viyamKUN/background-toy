@@ -113,12 +113,14 @@ class ViewController: NSViewController {
         movingController.updatePosition(
             window: view.window,
             stateController: stateController)
-        animator.updateImage(
-            imageView: characterImageView,
+        if let imagePath = animator.getUpdatedImagePath(
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
-            tickInterval: Constant.Animation.tickInterval,
-            isFlipped: movingController.isFlipped())
+            tickInterval: Constant.Animation.tickInterval)
+        {
+            characterImageView.image = NSImage(named: imagePath)?.flipped(
+                flipHorizontally: movingController.isFlipped())
+        }
 
         // Resets
         stateController.resetEveryTick()

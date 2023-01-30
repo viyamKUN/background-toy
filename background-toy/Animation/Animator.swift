@@ -5,7 +5,6 @@
 //  Created by 윤하연 on 2023/01/09.
 //
 
-import Cocoa
 import Foundation
 
 class Animator {
@@ -26,13 +25,11 @@ class Animator {
         }
     }
 
-    func updateImage(
-        imageView: NSImageView,
+    func getUpdatedImagePath(
         animationName: String,
         isUpdated: Bool,
-        tickInterval: Double,
-        isFlipped: Bool
-    ) {
+        tickInterval: Double
+    ) -> String? {
         if isUpdated {
             reset()
         }
@@ -40,7 +37,7 @@ class Animator {
         // Calculate tick count for frame rate.
         tickCount += tickInterval
         if tickCount < (1.0 / Double(Constant.Animation.frameRate)) {
-            return
+            return nil
         } else {
             tickCount = 0
         }
@@ -58,8 +55,10 @@ class Animator {
             default:
                 print("Unexpected value")
             }
-            imageView.image = NSImage(named: "\(animationName)_\(index)")?.flipped(
-                flipHorizontally: isFlipped)
+            let imagePath = "\(animationName)_\(index)"
+            return imagePath
+        } else {
+            return nil
         }
     }
 
