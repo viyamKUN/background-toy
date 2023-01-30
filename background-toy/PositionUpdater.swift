@@ -8,7 +8,7 @@
 import Cocoa
 import Foundation
 
-class MovingController {
+class PositionUpdater {
     private var direction = NSPoint(x: 1, y: 1)
 
     func isFlipped() -> Bool {
