@@ -11,8 +11,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
-    private var characterState = CharacterState(
-        currentState: Constant.State.CharacterState.idle, doNotDisturb: false)
+    private var systemState = SystemState(
+        characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
@@ -77,27 +77,27 @@ class ViewController: NSViewController {
 
     override func mouseDragged(with event: NSEvent) {
         view.window?.performDrag(with: event)
-        characterState.isOnDragging = true
+        systemState.isOnDragging = true
     }
 
     override func mouseUp(with event: NSEvent) {
-        if characterState.isOnDragging {
-            characterState.isOnDragging = false
-        } else if characterState.isTouchingTimeInTouchRange() {
-            characterState.isTouched = true
+        if systemState.isOnDragging {
+            systemState.isOnDragging = false
+        } else if systemState.isTouchingTimeInTouchRange() {
+            systemState.isTouched = true
         }
     }
 
     override func mouseDown(with event: NSEvent) {
-        characterState.touchingTime = 0
+        systemState.touchingTime = 0
     }
 
     override func mouseEntered(with event: NSEvent) {
-        characterState.isHover = true
+        systemState.isHover = true
     }
 
     override func mouseExited(with event: NSEvent) {
-        characterState.isHover = false
+        systemState.isHover = false
     }
 
     @objc func quit(sender: NSMenuItem) {
@@ -117,23 +117,23 @@ class ViewController: NSViewController {
     @objc func changeDisturbOption(sender: NSMenuItem) {
         let isOn = sender.state == NSControl.StateValue.on
         sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
-        characterState.doNotDisturb = !isOn
+        systemState.doNotDisturb = !isOn
     }
 
     @objc func updateEveryTick() {
         // update system state
-        if characterState.touchingTime < Constant.State.touchThreshold {
-            characterState.touchingTime += 1
+        if systemState.touchingTime < Constant.State.touchThreshold {
+            systemState.touchingTime += 1
         }
 
         // update character state
-        let newState = characterStateUpdater.getUpdateState(
-            systemState: characterState,
-            doNotDisturb: characterState.doNotDisturb)
-        characterState.currentState = newState
+        let newState = characterStateUpdater.getUpdatedState(
+            systemState: systemState,
+            doNotDisturb: systemState.doNotDisturb)
+        systemState.characterState = newState
 
         // update window position
-        let isWalk = characterState.currentState == .walk
+        let isWalk = systemState.characterState == .walk
         if isWalk {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
@@ -144,7 +144,7 @@ class ViewController: NSViewController {
 
         // update character image
         if let imagePath = animator.getUpdatedImagePath(
-            animationName: characterState.currentState.rawValue,
+            animationName: systemState.characterState.rawValue,
             isUpdated: characterStateUpdater.isUpdated,
             tickInterval: Constant.Animation.tickInterval)
         {
@@ -154,7 +154,7 @@ class ViewController: NSViewController {
 
         // Resets
         characterStateUpdater.resetEveryTick()
-        characterState.isTouched = false
+        systemState.isTouched = false
     }
 }
 
