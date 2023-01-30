@@ -103,6 +103,16 @@ class ViewController: NSViewController {
         NSApp.terminate(self)
     }
 
+    @objc func changeTopmostOption(sender: NSMenuItem) {
+        let isOn = sender.state == NSControl.StateValue.on
+        sender.state = isOn ? NSControl.StateValue.off : NSControl.StateValue.on
+        if isOn {
+            view.window?.level = .normal
+        } else {
+            view.window?.level = .floating
+        }
+    }
+
     @objc func updateEveryTick() {
         // update system state
         systemState.updateTouchingTime()
@@ -140,11 +150,14 @@ class ViewController: NSViewController {
 private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let contextMenu = NSMenu()
 
+    let topmost = NSMenuItem(
+        title: "최상단으로", action: #selector(ViewController.changeTopmostOption(sender:)),
+        keyEquivalent: "")
+    topmost.state = NSControl.StateValue.on
     let quit = NSMenuItem(
         title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
-    // TODO: Add more menu items
 
-    let items = [quit]
+    let items = [topmost, quit]
     items.forEach(contextMenu.addItem)
 
     // Create macro menu items
