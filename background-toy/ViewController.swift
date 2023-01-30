@@ -111,8 +111,7 @@ class ViewController: NSViewController {
         stateController.updateState(
             systemState: systemState)
 
-        let isWalking = stateController.currentState == .walk
-        if isWalking {
+        if stateController.compareCurrentState(.walk) {
             if let window = view.window {
                 windowPositionUpdater.updatePosition(
                     window: window,
