@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct Animation {
+struct Animation: Decodable {
     var spriteFolderPath: String
-    var clip: [Clip]
+    var clips: Clips
 }
 
-struct Clip {
+typealias Clips = [Clip]
+
+struct Clip: Decodable {
     var name: String
     var count: Int
     var playType: String

@@ -1,30 +1,30 @@
 {
     "spriteFolderPath": "default",
-    "clip": [
+    "clips": [
         {
-            "name": idle,
+            "name": "idle",
             "count": 3,
-            "playType": pingpong
+            "playType": "pingpong"
         },
         {
-            "name": walk,
+            "name": "walk",
             "count": 7,
-            "playType": restart
+            "playType": "restart"
         },
         {
-            "name": grab,
+            "name": "grab",
             "count": 3,
-            "playType": pingpong
+            "playType": "pingpong"
         },
         {
-            "name": touch,
+            "name": "touch",
             "count": 2,
-            "playType": restart
+            "playType": "restart"
         },
         {
-            "name": playingcursor,
+            "name": "playingcursor",
             "count": 6,
-            "playType": restart
+            "playType": "restart"
         }
     ]
 }

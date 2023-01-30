@@ -9,10 +9,10 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
-    private let animator = AnimationController()
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
+    private var animator: AnimationController!
     private var macroExecutor: MacroExecutor!
 
     override func viewDidLoad() {
@@ -35,8 +35,8 @@ class ViewController: NSViewController {
         view.window?.backgroundColor = Constant.Window.backgroundColor
 
         // Read data
-        animator.readAnimationData()
         do {
+            animator = try newAnimator()
             macroExecutor = try newMacroExecutor()
         } catch {
             print("Error info: \(error)")
