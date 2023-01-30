@@ -110,9 +110,15 @@ class ViewController: NSViewController {
         // update controllers
         stateController.updateState(
             systemState: systemState)
-        positionUpdater.updatePosition(
-            window: view.window,
-            stateController: stateController)
+
+        let isWalking = stateController.currentState == .walk
+        if isWalking {
+            if let window = view.window {
+                positionUpdater.updatePosition(
+                    window: window,
+                    isStateUpdated: stateController.isUpdated)
+            }
+        }
         if let imagePath = animator.getUpdatedImagePath(
             animationName: stateController.currentState.rawValue,
             isUpdated: stateController.isUpdated,
