@@ -40,24 +40,23 @@ class Animator {
             tickCount = 0
         }
 
-        // Change image.
-        if let info = getClip(animationName) {
-            switch info.playType {
-            case "restart":
-                index = (index + 1) % info.count
-            case "pingpong":
-                index += adder
-                if index + adder >= info.count || index + adder < 0 {
-                    adder *= -1
-                }
-            default:
-                print("Unexpected value")
+        // Update image index.
+        guard let info = getClip(animationName) else { return nil }
+        switch info.playType {
+        case "restart":
+            index = (index + 1) % info.count
+        case "pingpong":
+            index += adder
+            if index + adder >= info.count || index + adder < 0 {
+                adder *= -1
             }
-            let imagePath = "\(animationName)_\(index)"
-            return imagePath
-        } else {
-            return nil
+        default:
+            print("Unexpected value")
         }
+
+        // Find image path.
+        let imagePath = "\(animationName)_\(index)"
+        return imagePath
     }
 
     private func reset() {
