@@ -8,7 +8,7 @@
 import Cocoa
 import Foundation
 
-class AnimationController {
+class Animator {
     private var spriteFolderPath = ""
     private var clipMap: [String: Clip] = [:]
     private var index = -1
@@ -71,7 +71,7 @@ class AnimationController {
 
 // TODO: read data from local file path, not bundle.
 /// create animation data from local json file.
-func newAnimator() throws -> AnimationController {
+func newAnimator() throws -> Animator {
     if let path = Bundle.main.path(forResource: "animation", ofType: "json") {
         let s = try String(contentsOf: URL(filePath: path), encoding: .utf8)
         return try newAnimatorFromJSONString(s)
@@ -80,12 +80,12 @@ func newAnimator() throws -> AnimationController {
     }
 }
 
-func newAnimatorFromJSONString(_ s: String) throws -> AnimationController {
+func newAnimatorFromJSONString(_ s: String) throws -> Animator {
     let decoder = JSONDecoder()
     guard let jsonData = s.data(using: .utf8) else { throw BTError.invalidData }
     let animation = try decoder.decode(Animation.self, from: jsonData)
 
-    let animator = AnimationController()
+    let animator = Animator()
     animator.registerAnimation(animation)
     return animator
 }

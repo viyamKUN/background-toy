@@ -12,7 +12,7 @@ class ViewController: NSViewController {
     private let stateController = StateController()
     private let systemState = SystemState()
     private let movingController = MovingController()
-    private var animator: AnimationController!
+    private var animator: Animator!
     private var macroExecutor: MacroExecutor!
 
     override func viewDidLoad() {
