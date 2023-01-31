@@ -156,6 +156,12 @@ class MainViewController: NSViewController {
         characterStateUpdater.resetEveryTick()
         systemState.isTouched = false
     }
+
+    func openChatBubble() {
+        performSegue(
+            withIdentifier: "ShowChatBubble",
+            sender: self)
+    }
 }
 
 /// Create NSMenu and add menu items.

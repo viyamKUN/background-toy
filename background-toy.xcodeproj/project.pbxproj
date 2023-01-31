@@ -11,6 +11,7 @@
 		9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27622D29759DCD00245284 /* MacroCommands.swift */; };
 		9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */; };
 		9E30A509298832EE00F32653 /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E30A508298832EE00F32653 /* SystemState.swift */; };
+		9E4FEE5329890AE60091BC10 /* ChatBubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */; };
 		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
 		9E78AA522987EDB200A00E48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA512987EDB200A00E48 /* Model.swift */; };
 		9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */; };
@@ -55,6 +56,7 @@
 		9E27622D29759DCD00245284 /* MacroCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroCommands.swift; sourceTree = "<group>"; };
 		9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutor.swift; sourceTree = "<group>"; };
 		9E30A508298832EE00F32653 /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
+		9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleViewController.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E78AA512987EDB200A00E48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutorTests.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */,
 				35401DD42982EF2600C215BF /* Constant.swift */,
 				9E78AA562987F44800A00E48 /* Errors.swift */,
+				9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */,
 			);
 			path = "background-toy";
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E4FEE5329890AE60091BC10 /* ChatBubbleViewController.swift in Sources */,
 				9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */,
 				9F6D94C5296ADE190022579C /* MainViewController.swift in Sources */,
 				9E78AA522987EDB200A00E48 /* Model.swift in Sources */,

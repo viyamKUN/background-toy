@@ -709,6 +709,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="idle_0" id="rQ4-Rx-8Kd"/>
+                        <connections>
+                            <segue destination="MB1-tb-eDr" kind="show" identifier="ShowChatBubble" id="U93-6D-Aam"/>
+                        </connections>
                     </imageView>
                     <connections>
                         <outlet property="characterImageView" destination="QcT-eO-poX" id="WYf-cF-FgH"/>
@@ -717,6 +720,19 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--Chat Bubble View Controller-->
+        <scene sceneID="NQV-Pb-baE">
+            <objects>
+                <viewController id="MB1-tb-eDr" userLabel="Chat Bubble View Controller" customClass="ChatBubbleViewController" customModule="background_toy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Gq0-bk-LpW">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="v6u-Jo-emO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579" y="655"/>
         </scene>
     </scenes>
     <resources>
