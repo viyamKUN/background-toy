@@ -8,6 +8,8 @@
 import Cocoa
 
 class MainViewController: NSViewController {
+    static var instance: MainViewController!
+
     @IBOutlet weak var characterImageView: NSImageView!
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
@@ -17,14 +19,10 @@ class MainViewController: NSViewController {
     private var macroExecutor: MacroExecutor!
     private var chatBubblePayload: ChatBubblePayload!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
     override func viewWillAppear() {
         super.viewWillAppear()
+
+        MainViewController.instance = self
 
         // Set size and position
         view.window?.setContentSize(

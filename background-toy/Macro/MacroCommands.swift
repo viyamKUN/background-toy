@@ -33,3 +33,10 @@ class ProcessCommand: Command {
 
     }
 }
+
+class ChatCommand: Command {
+    func execute(_ payload: String) {
+        MainViewController.instance.openChatBubbleView(
+            payload, Constant.ChatBubble.macroChatTimeLimit)
+    }
+}

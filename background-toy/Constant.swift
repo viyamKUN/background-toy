@@ -38,4 +38,8 @@ struct Constant {
         static let backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
         static let positionOffsetFromMainWindow = CGPoint(x: 0, y: 100)
     }
+
+    struct ChatBubble {
+        static let macroChatTimeLimit: Double = 3
+    }
 }

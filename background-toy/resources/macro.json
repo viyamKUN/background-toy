@@ -7,6 +7,10 @@
         {
             "type": "web",
             "payload": "https://www.google.com/"
+        },
+        {
+            "type": "chat",
+            "payload": "Hey! Let's play game."
         }
     ],
     "테스트2": [
