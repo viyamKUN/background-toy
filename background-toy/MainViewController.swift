@@ -15,7 +15,7 @@ class MainViewController: NSViewController {
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
-    private var chatBubbleMessage: String = ""
+    private var chatBubblePayload: ChatBubblePayload!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,6 @@ class MainViewController: NSViewController {
             ],
             owner: self)
         view.addTrackingArea(trackingArea)
-        openChatBubbleView("TEST DATA")
     }
 
     override func viewDidAppear() {
@@ -105,12 +104,7 @@ class MainViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.destinationController is ChatBubbleViewController {
             let viewController = segue.destinationController as? ChatBubbleViewController
-            let payload = ChatBubblePayload(
-                parentWindow: view.window,
-                initialPosition: view.window?.frame.origin ?? CGPoint(x: 0, y: 0),
-                appearingTimeLimit: 5,
-                message: chatBubbleMessage)
-            viewController?.payload = payload
+            viewController?.payload = chatBubblePayload
         }
     }
 
@@ -171,8 +165,12 @@ class MainViewController: NSViewController {
         systemState.isTouched = false
     }
 
-    func openChatBubbleView(_ message: String) {
-        chatBubbleMessage = message
+    func openChatBubbleView(_ message: String, _ appearingTimeLimit: Double) {
+        chatBubblePayload = ChatBubblePayload(
+            parentWindow: view.window,
+            initialPosition: view.window?.frame.origin ?? CGPoint(x: 0, y: 0),
+            appearingTimeLimit: appearingTimeLimit,
+            message: message)
         performSegue(
             withIdentifier: "ShowChatBubble",
             sender: self)
