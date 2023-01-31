@@ -105,9 +105,12 @@ class MainViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.destinationController is ChatBubbleViewController {
             let viewController = segue.destinationController as? ChatBubbleViewController
-            viewController?.message = chatBubbleMessage
-            viewController?.initialPosition = view.window?.frame.origin ?? CGPoint(x: 0, y: 0)
-            viewController?.parentWindow = view.window
+            let payload = ChatBubblePayload(
+                parentWindow: view.window,
+                initialPosition: view.window?.frame.origin ?? CGPoint(x: 0, y: 0),
+                appearingTimeLimit: 5,
+                message: chatBubbleMessage)
+            viewController?.payload = payload
         }
     }
 
