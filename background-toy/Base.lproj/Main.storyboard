@@ -725,7 +725,7 @@
         <scene sceneID="NQV-Pb-baE">
             <objects>
                 <viewController id="MB1-tb-eDr" userLabel="Chat Bubble View Controller" customClass="ChatBubbleViewController" customModule="background_toy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" id="Gq0-bk-LpW" userLabel="Chat Bubble View">
+                    <view key="view" id="Gq0-bk-LpW" userLabel="Chat Bubble View">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

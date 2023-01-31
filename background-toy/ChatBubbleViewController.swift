@@ -17,6 +17,9 @@ class ChatBubbleViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
+        // Set default settings
+        view.window?.styleMask = .borderless
+
         // Set size and position
         view.window?.setContentSize(
             NSSize(width: Constant.ChatBubbleWindow.width, height: Constant.ChatBubbleWindow.height)
