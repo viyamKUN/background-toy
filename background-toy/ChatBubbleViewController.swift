@@ -8,10 +8,12 @@
 import Cocoa
 
 class ChatBubbleViewController: NSViewController {
+    var message: String = ""
+
     override func viewWillAppear() {
         super.viewWillAppear()
 
         // TODO: implement
-        print("Open Chat Bubble.")
+        print("Open chat bubble with message... \(message)")
     }
 }

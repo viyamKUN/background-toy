@@ -15,6 +15,7 @@ class MainViewController: NSViewController {
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
+    private var chatBubbleMessage: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class MainViewController: NSViewController {
             ],
             owner: self)
         view.addTrackingArea(trackingArea)
+        openChatBubble("TEST DATA")
     }
 
     override func viewDidAppear() {
@@ -98,6 +100,13 @@ class MainViewController: NSViewController {
 
     override func mouseExited(with event: NSEvent) {
         systemState.isHover = false
+    }
+
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.destinationController is ChatBubbleViewController {
+            let viewController = segue.destinationController as? ChatBubbleViewController
+            viewController?.message = chatBubbleMessage
+        }
     }
 
     @objc func quit(sender: NSMenuItem) {
@@ -157,7 +166,8 @@ class MainViewController: NSViewController {
         systemState.isTouched = false
     }
 
-    func openChatBubble() {
+    func openChatBubble(_ message: String) {
+        chatBubbleMessage = message
         performSegue(
             withIdentifier: "ShowChatBubble",
             sender: self)
