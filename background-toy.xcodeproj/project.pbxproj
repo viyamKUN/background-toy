@@ -11,6 +11,9 @@
 		9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27622D29759DCD00245284 /* MacroCommands.swift */; };
 		9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */; };
 		9E30A509298832EE00F32653 /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E30A508298832EE00F32653 /* SystemState.swift */; };
+		9E4FEE5329890AE60091BC10 /* ChatBubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */; };
+		9E4FEE56298927F60091BC10 /* CenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE55298927F60091BC10 /* CenteredTextFieldCell.swift */; };
+		9E4FEE5929893A540091BC10 /* ChatBubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE5829893A540091BC10 /* ChatBubbleModel.swift */; };
 		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
 		9E78AA522987EDB200A00E48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA512987EDB200A00E48 /* Model.swift */; };
 		9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */; };
@@ -20,7 +23,7 @@
 		9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5F2988218000A00E48 /* AnimatorTests.swift */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
-		9F6D94C5296ADE190022579C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* ViewController.swift */; };
+		9F6D94C5296ADE190022579C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* MainViewController.swift */; };
 		9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6D94C6296ADE1A0022579C /* Assets.xcassets */; };
 		9F6D94CA296ADE1A0022579C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6D94C8296ADE1A0022579C /* Main.storyboard */; };
 		9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94D4296ADE1B0022579C /* background_toyTests.swift */; };
@@ -55,6 +58,9 @@
 		9E27622D29759DCD00245284 /* MacroCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroCommands.swift; sourceTree = "<group>"; };
 		9E2B501D2986C85E00D2AE28 /* MacroExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutor.swift; sourceTree = "<group>"; };
 		9E30A508298832EE00F32653 /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
+		9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleViewController.swift; sourceTree = "<group>"; };
+		9E4FEE55298927F60091BC10 /* CenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredTextFieldCell.swift; sourceTree = "<group>"; };
+		9E4FEE5829893A540091BC10 /* ChatBubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleModel.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E78AA512987EDB200A00E48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutorTests.swift; sourceTree = "<group>"; };
@@ -65,7 +71,7 @@
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94C2296ADE190022579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F6D94C4296ADE190022579C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F6D94C4296ADE190022579C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F6D94C6296ADE1A0022579C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6D94C9296ADE1A0022579C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F6D94CB296ADE1A0022579C /* background_toy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = background_toy.entitlements; sourceTree = "<group>"; };
@@ -122,6 +128,22 @@
 				9E30A508298832EE00F32653 /* SystemState.swift */,
 			);
 			path = SystemState;
+			sourceTree = "<group>";
+		};
+		9E4FEE54298927BE0091BC10 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				9E4FEE55298927F60091BC10 /* CenteredTextFieldCell.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		9E4FEE5729893A3B0091BC10 /* ChatBubble */ = {
+			isa = PBXGroup;
+			children = (
+				9E4FEE5829893A540091BC10 /* ChatBubbleModel.swift */,
+			);
+			path = ChatBubble;
 			sourceTree = "<group>";
 		};
 		9E70FCAE29802ECF000C787C /* resources */ = {
@@ -191,19 +213,22 @@
 		9F6D94C1296ADE190022579C /* background-toy */ = {
 			isa = PBXGroup;
 			children = (
+				9E4FEE5729893A3B0091BC10 /* ChatBubble */,
+				9E4FEE54298927BE0091BC10 /* CustomUI */,
 				9E30A507298832D900F32653 /* SystemState */,
 				9E78AA58298812DE00A00E48 /* Animation */,
 				9E2B501C2986C83C00D2AE28 /* Macro */,
 				9E70FCAE29802ECF000C787C /* resources */,
 				9E8A07E62973F59900C237F1 /* Extensions */,
 				9F6D94C2296ADE190022579C /* AppDelegate.swift */,
-				9F6D94C4296ADE190022579C /* ViewController.swift */,
+				9F6D94C4296ADE190022579C /* MainViewController.swift */,
 				9F6D94C6296ADE1A0022579C /* Assets.xcassets */,
 				9F6D94C8296ADE1A0022579C /* Main.storyboard */,
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
 				9FAD5D5829715C05003069D1 /* WindowPositionUpdater.swift */,
 				35401DD42982EF2600C215BF /* Constant.swift */,
 				9E78AA562987F44800A00E48 /* Errors.swift */,
+				9E4FEE5229890AE60091BC10 /* ChatBubbleViewController.swift */,
 			);
 			path = "background-toy";
 			sourceTree = "<group>";
@@ -405,8 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E4FEE5329890AE60091BC10 /* ChatBubbleViewController.swift in Sources */,
 				9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */,
-				9F6D94C5296ADE190022579C /* ViewController.swift in Sources */,
+				9F6D94C5296ADE190022579C /* MainViewController.swift in Sources */,
 				9E78AA522987EDB200A00E48 /* Model.swift in Sources */,
 				9E78AA572987F44800A00E48 /* Errors.swift in Sources */,
 				35401DD52982EF2600C215BF /* Constant.swift in Sources */,
@@ -417,7 +443,9 @@
 				9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */,
 				9FEFC975296B365B00530526 /* Animator.swift in Sources */,
 				9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */,
+				9E4FEE5929893A540091BC10 /* ChatBubbleModel.swift in Sources */,
 				9FAD5D5929715C05003069D1 /* WindowPositionUpdater.swift in Sources */,
+				9E4FEE56298927F60091BC10 /* CenteredTextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

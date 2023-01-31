@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class MainViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
@@ -15,6 +15,7 @@ class ViewController: NSViewController {
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
+    private var chatBubbleMessage: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class ViewController: NSViewController {
         let timer = Timer(
             timeInterval: Constant.Animation.tickInterval,
             target: self,
-            selector: #selector(ViewController.updateEveryTick),
+            selector: #selector(MainViewController.updateEveryTick),
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
@@ -62,6 +63,7 @@ class ViewController: NSViewController {
             ],
             owner: self)
         view.addTrackingArea(trackingArea)
+        openChatBubbleView("TEST DATA")
     }
 
     override func viewDidAppear() {
@@ -98,6 +100,18 @@ class ViewController: NSViewController {
 
     override func mouseExited(with event: NSEvent) {
         systemState.isHover = false
+    }
+
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.destinationController is ChatBubbleViewController {
+            let viewController = segue.destinationController as? ChatBubbleViewController
+            let payload = ChatBubblePayload(
+                parentWindow: view.window,
+                initialPosition: view.window?.frame.origin ?? CGPoint(x: 0, y: 0),
+                appearingTimeLimit: 5,
+                message: chatBubbleMessage)
+            viewController?.payload = payload
+        }
     }
 
     @objc func quit(sender: NSMenuItem) {
@@ -156,6 +170,13 @@ class ViewController: NSViewController {
         characterStateUpdater.resetEveryTick()
         systemState.isTouched = false
     }
+
+    func openChatBubbleView(_ message: String) {
+        chatBubbleMessage = message
+        performSegue(
+            withIdentifier: "ShowChatBubble",
+            sender: self)
+    }
 }
 
 /// Create NSMenu and add menu items.
@@ -163,14 +184,14 @@ private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let contextMenu = NSMenu()
 
     let topmost = NSMenuItem(
-        title: "최상단으로", action: #selector(ViewController.changeTopmostOption(sender:)),
+        title: "최상단으로", action: #selector(MainViewController.changeTopmostOption(sender:)),
         keyEquivalent: "")
     topmost.state = NSControl.StateValue.on
     let doNotDisturb = NSMenuItem(
-        title: "방해금지", action: #selector(ViewController.changeDisturbOption(sender:)),
+        title: "방해금지", action: #selector(MainViewController.changeDisturbOption(sender:)),
         keyEquivalent: "")
     let quit = NSMenuItem(
-        title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
+        title: "잘 가", action: #selector(MainViewController.quit(sender:)), keyEquivalent: "")
 
     let items = [topmost, doNotDisturb, quit]
     items.forEach(contextMenu.addItem)
