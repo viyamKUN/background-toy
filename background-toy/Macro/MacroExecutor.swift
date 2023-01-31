@@ -75,6 +75,8 @@ private func getCommand(_ type: String) throws -> Command {
         return ProcessCommand()
     case "web":
         return WebCommand()
+    case "chat":
+        return ChatCommand()
     default:
         throw BTError.invalidCommand
     }
