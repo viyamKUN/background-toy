@@ -14,3 +14,7 @@ struct ChatBubblePayload {
     var appearingTimeLimit: Double = 0
     var message: String = ""
 }
+
+typealias ChatMessageMap = [String: ChatMessages]
+
+typealias ChatMessages = [String]

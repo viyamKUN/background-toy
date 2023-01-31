@@ -11,12 +11,16 @@ class MainViewController: NSViewController {
     static var instance: MainViewController!
 
     @IBOutlet weak var characterImageView: NSImageView!
+
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
+
     private var systemState = SystemState(
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
+    private var chatProvider: ChatProvider!
+
     private var chatBubblePayload: ChatBubblePayload!
 
     override func viewWillAppear() {
@@ -38,6 +42,7 @@ class MainViewController: NSViewController {
         do {
             animator = try newAnimator()
             macroExecutor = try newMacroExecutor()
+            chatProvider = try newChatProvider()
         } catch {
             print("Error info: \(error)")
         }
@@ -53,6 +58,13 @@ class MainViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+        let autoChatTimer = Timer(
+            timeInterval: Constant.ChatBubble.autoChatInterval,
+            target: self,
+            selector: #selector(MainViewController.showAutoChat),
+            userInfo: nil,
+            repeats: true)
+        RunLoop.main.add(autoChatTimer, forMode: RunLoop.Mode.common)
 
         let trackingArea = NSTrackingArea(
             rect: NSRect(x: 0, y: 0, width: Constant.Window.width, height: Constant.Window.height),
@@ -161,6 +173,12 @@ class MainViewController: NSViewController {
         // Resets
         characterStateUpdater.resetEveryTick()
         systemState.isTouched = false
+    }
+
+    @objc func showAutoChat() {
+        let hour = Calendar.current.component(.hour, from: Date())
+        let chat = chatProvider.getRandomChat(hour)
+        openChatBubbleView(chat, Constant.ChatBubble.autoChatTimeLimit)
     }
 
     func openChatBubbleView(_ message: String, _ appearingTimeLimit: Double) {

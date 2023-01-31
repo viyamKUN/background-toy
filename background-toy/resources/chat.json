@@ -1,0 +1,22 @@
+{
+    "morning" : [
+        "morning data 1",
+        "morning data 2"
+    ],
+    "launch" : [
+        "launch data 1",
+        "launch data 2"
+    ],
+    "afternoon" : [
+        "afternoon data 1",
+        "afternoon data 2"
+    ],
+    "evening" : [
+        "evening data 1",
+        "evening data 2"
+    ],
+    "night" : [
+        "night data 1",
+        "night data 2"
+    ]
+}
