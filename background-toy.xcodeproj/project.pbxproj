@@ -20,7 +20,7 @@
 		9E78AA602988218000A00E48 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA5F2988218000A00E48 /* AnimatorTests.swift */; };
 		9E8A07E52973F3E900C237F1 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */; };
 		9F6D94C3296ADE190022579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C2296ADE190022579C /* AppDelegate.swift */; };
-		9F6D94C5296ADE190022579C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* ViewController.swift */; };
+		9F6D94C5296ADE190022579C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94C4296ADE190022579C /* MainViewController.swift */; };
 		9F6D94C7296ADE1A0022579C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6D94C6296ADE1A0022579C /* Assets.xcassets */; };
 		9F6D94CA296ADE1A0022579C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6D94C8296ADE1A0022579C /* Main.storyboard */; };
 		9F6D94D5296ADE1B0022579C /* background_toyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D94D4296ADE1B0022579C /* background_toyTests.swift */; };
@@ -65,7 +65,7 @@
 		9E8A07E42973F3E900C237F1 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		9F6D94BF296ADE190022579C /* background-toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "background-toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D94C2296ADE190022579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F6D94C4296ADE190022579C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F6D94C4296ADE190022579C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F6D94C6296ADE1A0022579C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6D94C9296ADE1A0022579C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F6D94CB296ADE1A0022579C /* background_toy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = background_toy.entitlements; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				9E70FCAE29802ECF000C787C /* resources */,
 				9E8A07E62973F59900C237F1 /* Extensions */,
 				9F6D94C2296ADE190022579C /* AppDelegate.swift */,
-				9F6D94C4296ADE190022579C /* ViewController.swift */,
+				9F6D94C4296ADE190022579C /* MainViewController.swift */,
 				9F6D94C6296ADE1A0022579C /* Assets.xcassets */,
 				9F6D94C8296ADE1A0022579C /* Main.storyboard */,
 				9F6D94CB296ADE1A0022579C /* background_toy.entitlements */,
@@ -406,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2B501E2986C85E00D2AE28 /* MacroExecutor.swift in Sources */,
-				9F6D94C5296ADE190022579C /* ViewController.swift in Sources */,
+				9F6D94C5296ADE190022579C /* MainViewController.swift in Sources */,
 				9E78AA522987EDB200A00E48 /* Model.swift in Sources */,
 				9E78AA572987F44800A00E48 /* Errors.swift in Sources */,
 				35401DD52982EF2600C215BF /* Constant.swift in Sources */,

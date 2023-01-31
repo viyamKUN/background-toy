@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class MainViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
@@ -50,7 +50,7 @@ class ViewController: NSViewController {
         let timer = Timer(
             timeInterval: Constant.Animation.tickInterval,
             target: self,
-            selector: #selector(ViewController.updateEveryTick),
+            selector: #selector(MainViewController.updateEveryTick),
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
@@ -163,14 +163,14 @@ private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let contextMenu = NSMenu()
 
     let topmost = NSMenuItem(
-        title: "최상단으로", action: #selector(ViewController.changeTopmostOption(sender:)),
+        title: "최상단으로", action: #selector(MainViewController.changeTopmostOption(sender:)),
         keyEquivalent: "")
     topmost.state = NSControl.StateValue.on
     let doNotDisturb = NSMenuItem(
-        title: "방해금지", action: #selector(ViewController.changeDisturbOption(sender:)),
+        title: "방해금지", action: #selector(MainViewController.changeDisturbOption(sender:)),
         keyEquivalent: "")
     let quit = NSMenuItem(
-        title: "잘 가", action: #selector(ViewController.quit(sender:)), keyEquivalent: "")
+        title: "잘 가", action: #selector(MainViewController.quit(sender:)), keyEquivalent: "")
 
     let items = [topmost, doNotDisturb, quit]
     items.forEach(contextMenu.addItem)
