@@ -106,6 +106,8 @@ class MainViewController: NSViewController {
         if segue.destinationController is ChatBubbleViewController {
             let viewController = segue.destinationController as? ChatBubbleViewController
             viewController?.message = chatBubbleMessage
+            viewController?.initialPosition = view.window?.frame.origin ?? CGPoint(x: 0, y: 0)
+            viewController?.parentWindow = view.window
         }
     }
 

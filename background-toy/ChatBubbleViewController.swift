@@ -11,8 +11,9 @@ class ChatBubbleViewController: NSViewController {
     @IBOutlet weak var chatField: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
 
+    var parentWindow: NSWindow?
     var message: String = ""
-    var initialPosition = NSPoint(x: 0, y: 0)
+    var initialPosition = CGPoint(x: 0, y: 0)
 
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -30,6 +31,15 @@ class ChatBubbleViewController: NSViewController {
         view.window?.isOpaque = false
         view.window?.backgroundColor = Constant.ChatBubbleWindow.backgroundColor
 
+        // Add timer
+        let timer = Timer(
+            timeInterval: Constant.Animation.tickInterval,
+            target: self,
+            selector: #selector(ChatBubbleViewController.updateEveryTick),
+            userInfo: nil,
+            repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+
         // Set message
         chatField.stringValue = message
     }
@@ -37,5 +47,13 @@ class ChatBubbleViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.level = .floating
+    }
+
+    @objc func updateEveryTick() {
+        // Follow main view
+        var desiredPosition = parentWindow?.frame.origin ?? CGPoint(x: 0, y: 0)
+        let offset = Constant.ChatBubbleWindow.positionOffsetFromMainWindow
+        desiredPosition = CGPoint(x: desiredPosition.x + offset.x, y: desiredPosition.y + offset.y)
+        view.window?.setFrameOrigin(desiredPosition)
     }
 }
