@@ -5,6 +5,7 @@
 //  Created by 윤하연 on 2023/02/01.
 //
 
+import Cocoa
 import Foundation
 
 class ChatProvider {
@@ -15,7 +16,7 @@ class ChatProvider {
     }
 
     func getRandomChat() -> String {
-        let timeRange = "morning"  // test
+        let timeRange = getTimeRange()
         if let messages = chatMessageMap[timeRange] {
             let max = messages.count - 1
             if max >= 0 {
@@ -23,6 +24,23 @@ class ChatProvider {
             }
         }
         return Constant.ChatBubble.defaultChat
+    }
+
+    private func getTimeRange() -> String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        if hour < 7 {
+            return "night"
+        } else if hour < 11 {
+            return "morning"
+        } else if hour < 14 {
+            return "launch"
+        } else if hour < 17 {
+            return "afternoon"
+        } else if hour < 19 {
+            return "evening"
+        } else {
+            return "night"
+        }
     }
 }
 

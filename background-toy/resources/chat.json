@@ -11,6 +11,10 @@
         "afternoon data 1",
         "afternoon data 2"
     ],
+    "evening" : [
+        "evening data 1",
+        "evening data 2"
+    ],
     "night" : [
         "night data 1",
         "night data 2"
