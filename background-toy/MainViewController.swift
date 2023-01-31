@@ -63,7 +63,7 @@ class MainViewController: NSViewController {
             ],
             owner: self)
         view.addTrackingArea(trackingArea)
-        openChatBubble("TEST DATA")
+        openChatBubbleView("TEST DATA")
     }
 
     override func viewDidAppear() {
@@ -166,7 +166,7 @@ class MainViewController: NSViewController {
         systemState.isTouched = false
     }
 
-    func openChatBubble(_ message: String) {
+    func openChatBubbleView(_ message: String) {
         chatBubbleMessage = message
         performSegue(
             withIdentifier: "ShowChatBubble",
