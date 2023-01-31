@@ -15,6 +15,7 @@ class ChatProvider {
         self.chatMessageMap = chatMessageMap
     }
 
+    /// get random chat by hour.
     func getRandomChat(_ hour: Int) -> String {
         let timeRange = getTimeRange(hour)
         if let messages = chatMessageMap[timeRange] {
@@ -46,7 +47,7 @@ class ChatProvider {
 // TODO: read data from local file path, not bundle.
 /// create macro executor data from local json file.
 func newChatProvider() throws -> ChatProvider {
-    if let path = Bundle.main.path(forResource: "chatMessage", ofType: "json") {
+    if let path = Bundle.main.path(forResource: "chat", ofType: "json") {
         let s = try String(
             contentsOf: URL(fileURLWithPath: path),
             encoding: .utf8)
