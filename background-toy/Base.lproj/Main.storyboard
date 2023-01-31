@@ -729,15 +729,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" id="Ca5-iF-teC" userLabel="Background">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ca5-iF-teC" userLabel="Background">
                                 <rect key="frame" x="0.0" y="-3.5" width="202.5" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSTouchBarRecordStopTemplate" id="r6t-lt-784"/>
                                 <color key="contentTintColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </imageView>
-                            <textField identifier="ChatLabel" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" id="Kxs-MI-F1w">
+                            <textField identifier="ChatLabel" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" id="Kxs-MI-F1w">
                                 <rect key="frame" x="-2" y="0.0" width="204" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" title="Hello~" id="2sR-2L-pPj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -746,6 +746,10 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="chatField" destination="Kxs-MI-F1w" id="Xmn-L9-Bpo"/>
+                        <outlet property="imageView" destination="Ca5-iF-teC" id="sA8-nH-T2D"/>
+                    </connections>
                 </viewController>
                 <customObject id="v6u-Jo-emO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

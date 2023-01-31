@@ -8,6 +8,9 @@
 import Cocoa
 
 class ChatBubbleViewController: NSViewController {
+    @IBOutlet weak var chatField: NSTextField!
+    @IBOutlet weak var imageView: NSImageView!
+
     var message: String = ""
     var initialPosition = NSPoint(x: 0, y: 0)
 
@@ -25,8 +28,7 @@ class ChatBubbleViewController: NSViewController {
         view.window?.backgroundColor = Constant.ChatBubbleWindow.backgroundColor
 
         // Set message
-        // TODO: implement
-        print("Open chat bubble with message... \(message)")
+        chatField.stringValue = message
     }
 
     override func viewDidAppear() {
