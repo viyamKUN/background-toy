@@ -40,6 +40,8 @@ struct Constant {
     }
 
     struct ChatBubble {
+        static let autoChatInterval: Double = 300
+        static let autoChatTimeLimit: Double = 3
         static let macroChatTimeLimit: Double = 3
     }
 }

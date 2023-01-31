@@ -13,6 +13,7 @@ class MainViewController: NSViewController {
     @IBOutlet weak var characterImageView: NSImageView!
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
+    private let chatProvider = ChatProvider()
     private var systemState = SystemState(
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
@@ -53,6 +54,13 @@ class MainViewController: NSViewController {
             userInfo: nil,
             repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+        let autoChatTimer = Timer(
+            timeInterval: Constant.ChatBubble.autoChatInterval,
+            target: self,
+            selector: #selector(MainViewController.showAutoChat),
+            userInfo: nil,
+            repeats: true)
+        RunLoop.main.add(autoChatTimer, forMode: RunLoop.Mode.common)
 
         let trackingArea = NSTrackingArea(
             rect: NSRect(x: 0, y: 0, width: Constant.Window.width, height: Constant.Window.height),
@@ -161,6 +169,11 @@ class MainViewController: NSViewController {
         // Resets
         characterStateUpdater.resetEveryTick()
         systemState.isTouched = false
+    }
+
+    @objc func showAutoChat() {
+        let chat = chatProvider.getRandomChat()
+        openChatBubbleView(chat, Constant.ChatBubble.autoChatTimeLimit)
     }
 
     func openChatBubbleView(_ message: String, _ appearingTimeLimit: Double) {
