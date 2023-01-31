@@ -21,6 +21,7 @@ class ChatBubbleViewController: NSViewController {
         view.window?.setFrameOrigin(initialPosition)
 
         // Set background color
+        view.window?.isOpaque = false
         view.window?.backgroundColor = Constant.ChatBubbleWindow.backgroundColor
 
         // Set message

@@ -35,6 +35,6 @@ struct Constant {
     struct ChatBubbleWindow {
         static let width = 120
         static let height = 100
-        static let backgroundColor = NSColor(red: 1, green: 1, blue: 1, alpha: 1)
+        static let backgroundColor = NSColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
 }
