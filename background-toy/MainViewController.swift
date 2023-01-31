@@ -176,7 +176,8 @@ class MainViewController: NSViewController {
     }
 
     @objc func showAutoChat() {
-        let chat = chatProvider.getRandomChat()
+        let hour = Calendar.current.component(.hour, from: Date())
+        let chat = chatProvider.getRandomChat(hour)
         openChatBubbleView(chat, Constant.ChatBubble.autoChatTimeLimit)
     }
 
