@@ -22,7 +22,7 @@ class ChatProvider {
                 return messages[Int.random(in: 0...max)]
             }
         }
-        return "Hello"
+        return Constant.ChatBubble.defaultChat
     }
 }
 
