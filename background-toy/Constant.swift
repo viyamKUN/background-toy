@@ -31,4 +31,10 @@ struct Constant {
         ]
         static let touchThreshold = 10
     }
+
+    struct ChatBubbleWindow {
+        static let width = 120
+        static let height = 100
+        static let backgroundColor = NSColor(red: 1, green: 1, blue: 1, alpha: 1)
+    }
 }
