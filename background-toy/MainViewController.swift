@@ -11,13 +11,16 @@ class MainViewController: NSViewController {
     static var instance: MainViewController!
 
     @IBOutlet weak var characterImageView: NSImageView!
+
     private let characterStateUpdater = CharacterStateUpdater()
     private let windowPositionUpdater = WindowPositionUpdater()
-    private let chatProvider = ChatProvider()
+
     private var systemState = SystemState(
         characterState: Constant.State.CharacterState.idle, doNotDisturb: false)
     private var animator: Animator!
     private var macroExecutor: MacroExecutor!
+    private var chatProvider: ChatProvider!
+
     private var chatBubblePayload: ChatBubblePayload!
 
     override func viewWillAppear() {
@@ -39,6 +42,7 @@ class MainViewController: NSViewController {
         do {
             animator = try newAnimator()
             macroExecutor = try newMacroExecutor()
+            chatProvider = try newChatProvider()
         } catch {
             print("Error info: \(error)")
         }
