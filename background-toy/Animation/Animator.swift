@@ -5,6 +5,7 @@
 //  Created by 윤하연 on 2023/01/09.
 //
 
+import Cocoa
 import Foundation
 
 class Animator {
@@ -23,11 +24,11 @@ class Animator {
         return clipMap[name]
     }
 
-    func getUpdatedImagePath(
+    func getUpdatedImage(
         animationName: String,
         isUpdated: Bool,
         tickInterval: Double
-    ) -> String? {
+    ) -> NSImage? {
         if isUpdated {
             reset()
         }
@@ -54,14 +55,23 @@ class Animator {
             print("Unexpected value")
         }
 
-        // Find image path.
-        let imagePath = "\(animationName)_\(index)"
-        return imagePath
+        let image = getImage(spriteFolderPath, "\(animationName)_\(index)")
+        image?.size = NSSize(width: Constant.Window.width, height: Constant.Window.height)
+        return image
     }
 
     private func reset() {
         index = -1
         adder = 1
+    }
+
+    private func getImage(_ spriteFolderPath: String, _ fileName: String) -> NSImage? {
+        let isDefault = spriteFolderPath == "" || spriteFolderPath == "default"
+        if isDefault {
+            return NSImage(named: fileName)
+        } else {
+            return NSImage(byReferencingFile: "\(spriteFolderPath)/\(fileName).png")
+        }
     }
 }
 

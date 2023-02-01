@@ -706,8 +706,8 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="MainViewController" customModule="background_toy" customModuleProvider="target" sceneMemberID="viewController">
                     <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QcT-eO-poX">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="idle_0" id="rQ4-Rx-8Kd"/>
                         <connections>
                             <segue destination="MB1-tb-eDr" kind="show" identifier="ShowChatBubble" id="U93-6D-Aam"/>
