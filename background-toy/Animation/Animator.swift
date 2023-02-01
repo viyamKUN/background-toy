@@ -65,11 +65,12 @@ class Animator {
 
     private func getImage(_ spriteFolderPath: String, _ fileName: String) -> NSImage? {
         let isDefault = spriteFolderPath == "" || spriteFolderPath == "default"
-        if !isDefault {
-            print("\(spriteFolderPath)/\(fileName).png")
+        if isDefault {
+            return NSImage(named: fileName)
+        }
+        else {
             return NSImage(byReferencingFile: "\(spriteFolderPath)/\(fileName).png")
         }
-        return NSImage(named: fileName)
     }
 }
 
