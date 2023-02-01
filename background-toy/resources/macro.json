@@ -1,5 +1,5 @@
 {
-    "테스트1": [
+    "test1": [
         {
             "type": "process",
             "payload": "/Applications/Discord.app"
@@ -13,7 +13,7 @@
             "payload": "Hey! Let's play game."
         }
     ],
-    "테스트2": [
+    "test2": [
         {
             "type": "web",
             "payload": "https://www.naver.com/"

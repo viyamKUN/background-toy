@@ -198,14 +198,14 @@ private func createMenu(_ macroExecutor: MacroExecutor) -> NSMenu {
     let contextMenu = NSMenu()
 
     let topmost = NSMenuItem(
-        title: "최상단으로", action: #selector(MainViewController.changeTopmostOption(sender:)),
+        title: "To top", action: #selector(MainViewController.changeTopmostOption(sender:)),
         keyEquivalent: "")
     topmost.state = NSControl.StateValue.on
     let doNotDisturb = NSMenuItem(
-        title: "방해금지", action: #selector(MainViewController.changeDisturbOption(sender:)),
+        title: "Do not disturb", action: #selector(MainViewController.changeDisturbOption(sender:)),
         keyEquivalent: "")
     let quit = NSMenuItem(
-        title: "잘 가", action: #selector(MainViewController.quit(sender:)), keyEquivalent: "")
+        title: "Bye", action: #selector(MainViewController.quit(sender:)), keyEquivalent: "")
 
     let items = [topmost, doNotDisturb, quit]
     items.forEach(contextMenu.addItem)
