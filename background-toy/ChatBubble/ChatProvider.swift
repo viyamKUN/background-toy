@@ -33,7 +33,7 @@ class ChatProvider {
         } else if hour < 11 {
             return "morning"
         } else if hour < 14 {
-            return "launch"
+            return "lunch"
         } else if hour < 17 {
             return "afternoon"
         } else if hour < 19 {
