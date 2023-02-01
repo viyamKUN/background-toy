@@ -67,8 +67,7 @@ class Animator {
         let isDefault = spriteFolderPath == "" || spriteFolderPath == "default"
         if isDefault {
             return NSImage(named: fileName)
-        }
-        else {
+        } else {
             return NSImage(byReferencingFile: "\(spriteFolderPath)/\(fileName).png")
         }
     }
