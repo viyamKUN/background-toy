@@ -101,29 +101,26 @@ Here's a sample chat.json file:
 
 ```
 {
-    "spriteFolderPath": "default",
-    "clips": {
-        "idle": {
-            "count": 3,
-            "playType": "pingpong"
-        },
-        "walk": {
-            "count": 7,
-            "playType": "restart"
-        },
-        "grab": {
-            "count": 3,
-            "playType": "pingpong"
-        },
-        "touch": {
-            "count": 2,
-            "playType": "restart"
-        },
-        "playingcursor": {
-            "count": 6,
-            "playType": "restart"
-        }
-    }
+    "morning" : [
+        "morning data 1",
+        "morning data 2"
+    ],
+    "lunch" : [
+        "launch data 1",
+        "launch data 2"
+    ],
+    "afternoon" : [
+        "afternoon data 1",
+        "afternoon data 2"
+    ],
+    "evening" : [
+        "evening data 1",
+        "evening data 2"
+    ],
+    "night" : [
+        "night data 1",
+        "night data 2"
+    ]
 }
 ```
 
