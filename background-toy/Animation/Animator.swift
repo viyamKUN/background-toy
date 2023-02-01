@@ -55,7 +55,9 @@ class Animator {
             print("Unexpected value")
         }
 
-        return getImage(spriteFolderPath, "\(animationName)_\(index)")
+        let image = getImage(spriteFolderPath, "\(animationName)_\(index)")
+        image?.size = NSSize(width: Constant.Window.width, height: Constant.Window.height)
+        return image
     }
 
     private func reset() {
