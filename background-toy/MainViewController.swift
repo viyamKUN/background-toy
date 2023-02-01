@@ -161,12 +161,12 @@ class MainViewController: NSViewController {
         }
 
         // update character image
-        if let imagePath = animator.getUpdatedImagePath(
+        if let image = animator.getUpdatedImage(
             animationName: systemState.characterState.rawValue,
             isUpdated: characterStateUpdater.isUpdated,
             tickInterval: Constant.Animation.tickInterval)
         {
-            characterImageView.image = NSImage(named: imagePath)?.flipped(
+            characterImageView.image = image.flipped(
                 flipHorizontally: windowPositionUpdater.isFlipped())
         }
 
