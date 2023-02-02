@@ -61,3 +61,66 @@ func newChatProviderFromJSONString(_ s: String) throws -> ChatProvider {
     let chatMessageMap = try decoder.decode(ChatMessageMap.self, from: jsonData)
     return ChatProvider(chatMessageMap: chatMessageMap)
 }
+
+func editJSONfile() throws {
+    let target = "animation"
+    if let filepath = Bundle.main.path(forResource: target, ofType: "json") {
+        do {
+            let contents = try String(contentsOfFile: filepath)
+            print(contents)
+        } catch {
+            throw BTError.invalidData
+        }
+    } else {
+        throw BTError.invalidPath
+    }
+}
+
+func copyFile() {
+    if let resourcePath = Bundle.main.resourcePath {
+        do {
+            let docsArray = try FileManager.default.contentsOfDirectory(atPath: resourcePath)
+            for document in docsArray {
+                if document.hasSuffix(".json") {
+                    let resourceName = document.replacingOccurrences(of: ".json", with: "")
+                    if let filePath = Bundle.main.path(forResource: resourceName, ofType: "json") {
+                        let content = try String(contentsOfFile: filePath)
+                        let isSuccess = tryCreateFile(content, getDocumentDirectory(), document)
+                        if !isSuccess {
+                            print("Fail to copy files. Use default file in bundle.")
+                        } else {
+                            print("\(document) copied!!!")
+                        }
+                    }
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    //    tryCreateFile("이런 내용을 적을거야.", getDocumentDirectory(), "test.txt")
+}
+
+private func tryCreateFile(_ content: String, _ folderURL: URL, _ fileName: String) -> Bool {
+    let filePath = folderURL.appending(path: fileName).relativePath
+    print(filePath)
+    let data = content.data(using: .utf8)
+    let isSuccess = FileManager.default.createFile(
+        atPath: filePath,
+        contents: data, attributes: nil)
+    return isSuccess
+}
+
+private func tryWriteFile(_ content: String, _ folderURL: URL, _ fileName: String) throws {
+    do {
+        let fileURL = folderURL.appending(path: fileName).relativePath
+        try content.write(toFile: fileURL, atomically: true, encoding: .utf8)
+    } catch {
+        throw BTError.invalidPath
+    }
+}
+
+private func getDocumentDirectory() -> URL {
+    let documentsURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    return documentsURLs[0]
+}
