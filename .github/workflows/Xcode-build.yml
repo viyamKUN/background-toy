@@ -18,7 +18,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install the Apple certificate and provisioning profile
+    - name: Install the Apple certificate
       env:
         BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
         P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
@@ -29,7 +29,7 @@ jobs:
         PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
         KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
-        # import certificate and provisioning profile from secrets
+        # import certificate from secrets
         echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
 
         # create temporary keychain
@@ -41,15 +41,10 @@ jobs:
         security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
         security list-keychain -d user -s $KEYCHAIN_PATH
 
-        # apply provisioning profile
-        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-
     - name: Build project
       run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
 
-    - name: Clean up keychain and provisioning profile
+    - name: Clean up keychain
       if: ${{ always() }}
       run: |
         security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-        rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
