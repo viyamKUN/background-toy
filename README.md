@@ -19,7 +19,7 @@ This is a **desktop pet program**, built with Swift and can be run and built usi
 
 ## Custom
 
-# How to modify json file
+### How to modify json file
 
 You can find the Json file using the Finder. The addition of a Json file editor in the future is uncertain.
 
