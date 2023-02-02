@@ -18,9 +18,5 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Xcode
-      with:
-        xcode-version: 14.2
-
     - name: Build project
       run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy
