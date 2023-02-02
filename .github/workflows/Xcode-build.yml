@@ -24,10 +24,4 @@ jobs:
         xcode-version: 14.2
 
     - name: Build project
-      run: xcodebuild -workspace background-toy.xcworkspace -scheme background-toy -sdk macosx -destination platform='OS X'
-
-    - name: Archive the built app
-      run: xcodebuild -workspace background-toy.xcworkspace -scheme background-toy -sdk macosx -destination platform='OS X' archive -archivePath build/background-toy.xcarchive
-
-    - name: Export the archived app
-      run: xcodebuild -exportArchive -exportOptionsPlist exportOptions.plist -archivePath build/background-toy.xcarchive -exportPath build
+      run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy
