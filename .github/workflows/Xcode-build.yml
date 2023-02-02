@@ -46,14 +46,6 @@ jobs:
         brew install swift-format
 
     - name: Build project
-      run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
-
-    - name: Clean up keychain
-      if: ${{ always() }}
-      run: |
-        security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-
-    - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -63,6 +55,12 @@ jobs:
         release_name: ${{ github.ref }}
         draft: false
         prerelease: true
+      run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
+
+    - name: Clean up keychain
+      if: ${{ always() }}
+      run: |
+        security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
