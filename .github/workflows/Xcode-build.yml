@@ -59,7 +59,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.build_project.outputs.upload_url }}
-        asset_path: ./target/asset.tar.gz
-        asset_name: asset.tar.gz
-        asset_content_type: application/gzip
+        name: backgroud-toy
+        path: output/backgroud-toy.*
