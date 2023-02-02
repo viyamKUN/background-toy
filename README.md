@@ -19,6 +19,14 @@ This is a **desktop pet program**, built with Swift and can be run and built usi
 
 ## Custom
 
+# How to modify json file
+
+You can find the Json file using the Finder. The addition of a Json file editor in the future is uncertain.
+
+Mac OS applications are essentially folders, and you can access their contents by right-clicking on the application and selecting 'View Package Contents'. The path `./Contents/Resources/` holds Json files, which you can edit.
+
+To customize, simply follow the provided guide.
+
 ### Custom Animation
 
 You can customize the animation by editing the `animation.json` file.
