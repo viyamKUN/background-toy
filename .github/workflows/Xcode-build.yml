@@ -43,10 +43,7 @@ jobs:
 
     - name: Install the swift-format
       run: |
-        git clone https://github.com/apple/swift-format.git
-        cd swift-format
-        git checkout "tags/swift-5.7.3-RELEASE"
-        swift build -c release
+        brew install swift-format
 
     - name: Build project
       run: xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
