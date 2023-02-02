@@ -43,22 +43,3 @@ class ChatProvider {
         }
     }
 }
-
-// TODO: read data from local file path, not bundle.
-/// create macro executor data from local json file.
-func newChatProvider() throws -> ChatProvider {
-    if let path = Bundle.main.path(forResource: "chat", ofType: "json") {
-        let s = try String(
-            contentsOf: URL(fileURLWithPath: path),
-            encoding: .utf8)
-        return try newChatProviderFromJSONString(s)
-    }
-    throw BTError.invalidPath
-}
-
-func newChatProviderFromJSONString(_ s: String) throws -> ChatProvider {
-    let decoder = JSONDecoder()
-    guard let jsonData = s.data(using: .utf8) else { throw BTError.invalidData }
-    let chatMessageMap = try decoder.decode(ChatMessageMap.self, from: jsonData)
-    return ChatProvider(chatMessageMap: chatMessageMap)
-}

@@ -16,6 +16,7 @@
 		9E4FEE5929893A540091BC10 /* ChatBubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE5829893A540091BC10 /* ChatBubbleModel.swift */; };
 		9E4FEE6729896AFB0091BC10 /* ChatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FEE6629896AFB0091BC10 /* ChatProvider.swift */; };
 		9E4FEE6929896CEC0091BC10 /* chat.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E4FEE6829896CEC0091BC10 /* chat.json */; };
+		9E6B5F7A298BF4F400FA41F9 /* JsonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B5F79298BF4F400FA41F9 /* JsonReader.swift */; };
 		9E70FCB029802F24000C787C /* macro.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FCAF29802F24000C787C /* macro.json */; };
 		9E78AA522987EDB200A00E48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA512987EDB200A00E48 /* Model.swift */; };
 		9E78AA552987EFF300A00E48 /* MacroExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */; };
@@ -65,6 +66,7 @@
 		9E4FEE5829893A540091BC10 /* ChatBubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleModel.swift; sourceTree = "<group>"; };
 		9E4FEE6629896AFB0091BC10 /* ChatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProvider.swift; sourceTree = "<group>"; };
 		9E4FEE6829896CEC0091BC10 /* chat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = chat.json; sourceTree = "<group>"; };
+		9E6B5F79298BF4F400FA41F9 /* JsonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonReader.swift; sourceTree = "<group>"; };
 		9E70FCAF29802F24000C787C /* macro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = macro.json; sourceTree = "<group>"; };
 		9E78AA512987EDB200A00E48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9E78AA542987EFF300A00E48 /* MacroExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroExecutorTests.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = ChatBubble;
 			sourceTree = "<group>";
 		};
+		9E6B5F78298BF4DB00FA41F9 /* UserCustomData */ = {
+			isa = PBXGroup;
+			children = (
+				9E6B5F79298BF4F400FA41F9 /* JsonReader.swift */,
+			);
+			path = UserCustomData;
+			sourceTree = "<group>";
+		};
 		9E70FCAE29802ECF000C787C /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 		9F6D94C1296ADE190022579C /* background-toy */ = {
 			isa = PBXGroup;
 			children = (
+				9E6B5F78298BF4DB00FA41F9 /* UserCustomData */,
 				9E4FEE5729893A3B0091BC10 /* ChatBubble */,
 				9E4FEE54298927BE0091BC10 /* CustomUI */,
 				9E30A507298832D900F32653 /* SystemState */,
@@ -453,6 +464,7 @@
 				9E27622E29759DCD00245284 /* MacroCommands.swift in Sources */,
 				9E4FEE5929893A540091BC10 /* ChatBubbleModel.swift in Sources */,
 				9FAD5D5929715C05003069D1 /* WindowPositionUpdater.swift in Sources */,
+				9E6B5F7A298BF4F400FA41F9 /* JsonReader.swift in Sources */,
 				9E4FEE56298927F60091BC10 /* CenteredTextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

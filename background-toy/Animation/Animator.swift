@@ -74,23 +74,3 @@ class Animator {
         }
     }
 }
-
-// TODO: read data from local file path, not bundle.
-/// create animation data from local json file.
-func newAnimator() throws -> Animator {
-    if let path = Bundle.main.path(forResource: "animation", ofType: "json") {
-        let s = try String(contentsOf: URL(filePath: path), encoding: .utf8)
-        return try newAnimatorFromJSONString(s)
-    } else {
-        throw BTError.invalidPath
-    }
-}
-
-func newAnimatorFromJSONString(_ s: String) throws -> Animator {
-    let decoder = JSONDecoder()
-    guard let jsonData = s.data(using: .utf8) else { throw BTError.invalidData }
-    let animation = try decoder.decode(Animation.self, from: jsonData)
-
-    let animator = Animator(spriteFolderPath: animation.spriteFolderPath, clipMap: animation.clips)
-    return animator
-}
