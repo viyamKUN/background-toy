@@ -9,7 +9,7 @@ import Cocoa
 
 class CenteredTextFieldCell: NSTextFieldCell {
     override func drawingRect(forBounds rect: NSRect) -> NSRect {
-        let lineHeight: CGFloat = 16
+        let lineHeight: CGFloat = self.cellSize(forBounds: rect).height
         let newRect = NSRect(
             x: 0, y: (rect.size.height - lineHeight) / 2, width: rect.size.width, height: lineHeight
         )

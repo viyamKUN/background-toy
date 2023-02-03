@@ -1,22 +1,29 @@
 {
     "morning" : [
-        "morning data 1",
-        "morning data 2"
+        "Ready for a new day?",
+        "Good morning! Let's start with a smile and positive thoughts.",
+        "Focus on what matters most and believe in yourself!"
     ],
     "lunch" : [
-        "launch data 1",
-        "launch data 2"
+        "Time for a break!",
+        "Try new foods and expand your palate.",
+        "Take a walk outside and get some fresh air.",
+        "Try something new, stay hydrated, and connect with others."
     ],
     "afternoon" : [
-        "afternoon data 1",
-        "afternoon data 2"
+        "Reflection time! Check in on your progress and make adjustments.",
+        "Remember to take breaks and avoid stress.",
+        "Smile~"
     ],
     "evening" : [
-        "evening data 1",
-        "evening data 2"
+        "Hi there! Hope you're having a wonderful evening.",
+        "Goodnight! Sweet dreams and see you tomorrow."
     ],
     "night" : [
-        "night data 1",
-        "night data 2"
+        "Goodnight! Time for some well-deserved rest.",
+        "Relax and let your worries drift away.",
+        "Nighty night! Sweet dreams and get some rest.",
+        "Goodnight, sleep well and see you in the morning!",
+        "Get ready for a peaceful slumber and sweet dreams."
     ]
 }
