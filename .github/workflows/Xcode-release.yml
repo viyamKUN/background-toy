@@ -1,10 +1,9 @@
-name: Xcode - Build
+name: Xcode - Create release
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - "v*.*.*"
 
 env:
   LC_ALL: en_US.UTF-8
@@ -60,11 +59,11 @@ jobs:
         cd build/Build/Products/Release
         zip -r background-toy.zip background-toy.app
 
-    - name: Upload Build
-      uses: actions/upload-artifact@v3
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: backgroud-toy app
-        path: build/Build/Products/Release/background-toy.zip
+        files: build/Build/Products/Release/background-toy.zip
 
     - name: Clean up keychain
       if: ${{ always() }}
