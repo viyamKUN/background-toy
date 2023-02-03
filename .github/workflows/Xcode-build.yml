@@ -49,7 +49,6 @@ jobs:
       id: build_project
       run: |
         xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
-        ls
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
