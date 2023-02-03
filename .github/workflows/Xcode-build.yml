@@ -48,13 +48,23 @@ jobs:
     - name: Build project
       id: build_project
       run: |
-        xcodebuild build -project background-toy.xcodeproj -scheme background-toy -destination 'platform=OS X,arch=x86_64'
+        xcodebuild build \
+          -project background-toy.xcodeproj \
+          -scheme background-toy \
+          -destination 'platform=OS X,arch=x86_64' \
+          -configuration Release \
+          -derivedDataPath build
+
+    - name: Zipping build output
+      run: |
+        cd build/Build/Products/Release
+        zip -r background-toy.zip background-toy.app
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: backgroud-toy
-        path: /Users/runner/Library/Developer/Xcode/DerivedData/background-toy-bobgkkdnwqnrfxdilpsmpukhrcst/Build/Products/Debug
+        name: backgroud-toy app
+        path: build/Build/Products/Release/background-toy.zip
 
     - name: Clean up keychain
       if: ${{ always() }}
