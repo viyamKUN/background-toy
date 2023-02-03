@@ -738,7 +738,7 @@
                             <textField identifier="ChatLabel" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" id="Kxs-MI-F1w">
                                 <rect key="frame" x="8" y="10" width="184" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" title="Hello~" id="2sR-2L-pPj" customClass="CenteredTextFieldCell" customModule="background_toy" customModuleProvider="target">
+                                <textFieldCell key="cell" allowsUndo="NO" alignment="center" title="Hello~" id="2sR-2L-pPj" customClass="CenteredTextFieldCell" customModule="background_toy" customModuleProvider="target">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" red="0.044164677256161355" green="0.044164677256161355" blue="0.044164677256161355" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
