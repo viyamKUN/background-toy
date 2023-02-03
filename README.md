@@ -11,7 +11,7 @@ Hi! I'm your virtual desktop friend.
 
 ## Overview
 
-This is a **desktop pet program**, built with Swift and can be run and built using Xcode. In addition to providing alarm at a set time, it can also serve as a virtual companion that occasionally interacts with you.
+This is a **desktop pet program**, built with Swift and can be run and built using Xcode. It can be a virtual friend that occasionally interacts with you.
 
 ## Screenshot
 
@@ -134,4 +134,4 @@ Here's a sample chat.json file:
 
 # Conclusion
 
-This desktop pet program built with Swift is a fun and interactive tool for users. It offers various features including alarms, and macro execution, making it a well-rounded and customizable experience. The ability to change the animation, macro commands, and chat messages allows users to make the program their own. Whether it be a helpful reminder or a virtual friend, this program is sure to bring a touch of enjoyment to the user's desktop.
+This desktop pet program built with Swift is a fun and interactive tool for users. It offers various features including macro execution, making it a well-rounded and customizable experience. The ability to change the animation, macro commands, and chat messages allows users to make the program their own. Whether it be a helpful reminder or a virtual friend, this program is sure to bring a touch of enjoyment to the user's desktop.
