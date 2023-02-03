@@ -55,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: backgroud-toy.app
-        path: /Users/runner/Library/Developer/Xcode/DerivedData/background-toy-bobgkkdnwqnrfxdilpsmpukhrcst/Build/Products/Debug/background-toy.app
+        path: /Users/runner/Library/Developer/Xcode/DerivedData/background-toy-bobgkkdnwqnrfxdilpsmpukhrcst/Build/Products/Debug
 
     - name: Clean up keychain
       if: ${{ always() }}
