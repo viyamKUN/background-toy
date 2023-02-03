@@ -54,7 +54,7 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: backgroud-toy
+        name: backgroud-toy.app
         path: /Users/runner/Library/Developer/Xcode/DerivedData/background-toy-bobgkkdnwqnrfxdilpsmpukhrcst/Build/Products/Debug/background-toy.app
 
     - name: Clean up keychain
