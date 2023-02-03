@@ -1,22 +1,30 @@
 {
-    "test1": [
+    "game": [
         {
             "type": "process",
             "payload": "/Applications/Discord.app"
         },
         {
+            "type": "process",
+            "payload": "/Applications/Steam.app"
+        },
+        {
             "type": "web",
-            "payload": "https://www.google.com/"
+            "payload": "https://twitter.com/home"
         },
         {
             "type": "chat",
             "payload": "Hey! Let's play game."
         }
     ],
-    "test2": [
+    "music": [
         {
             "type": "web",
-            "payload": "https://www.naver.com/"
+            "payload": "https://www.youtube.com/watch?v=BBdC1rl5sKY"
+        },
+        {
+            "type": "chat",
+            "payload": "사건의 지평선 너머로~"
         }
     ]
 }
